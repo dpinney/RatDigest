@@ -42,3 +42,4 @@ SECOND CONVO
 - We can safely configure the input to GridLAB-D, then manipulate the output. We don't need to cosimulate.
 - Tim is building input, output, attack scenarios by Monday morning.
 - David will then pick them up and figure out how to implement them.
+- 4 attack types agreed on with PNNL, they did 5, we'll do 7.
