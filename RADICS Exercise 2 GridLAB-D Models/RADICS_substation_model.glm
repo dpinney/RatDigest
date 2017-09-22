@@ -54,14 +54,14 @@ module reliability{
 //};
 
 
-object fault_check {
-	name substation_switch_fault_object;
-	check_mode ONCHANGE;
-	eventgen_object event_loadshed1;
-	 output_filename test_connect_case1.txt;
-	 grid_association true;
-	 strictly_radial false;
-}
+//object fault_check {
+//	name substation_switch_fault_object;
+//	check_mode ONCHANGE;
+//	eventgen_object event_loadshed1;
+//	 output_filename test_connect_case1.txt;
+//	 grid_association true;
+//	 strictly_radial false;
+//}
 
 object eventgen {
 	name event_loadshed1;
@@ -555,15 +555,15 @@ object switch {
 //}
 
 
-object fncs_msg {
-    name GLD1;
-	parent Xfmr1;
-	option "transport:hostname localhost, port 5570";
-    configure RADICS_sub_1_configuration.txt;
-//	subscribe "commit:switch1.phase_A_state <- player/test_msg";
-//	publish "commit:Xfmr1.power_out_real -> power_out_real; 0";
-//	publish "commit:Xfmr1.power_out_imag -> power_out_imag; 0";
-}
+//object fncs_msg {
+//    name GLD1;
+//	parent Xfmr1;
+//	option "transport:hostname localhost, port 5570";
+//    configure RADICS_sub_1_configuration.txt;
+////	subscribe "commit:switch1.phase_A_state <- player/test_msg";
+////	publish "commit:Xfmr1.power_out_real -> power_out_real; 0";
+////	publish "commit:Xfmr1.power_out_imag -> power_out_imag; 0";
+//}
 
 object recorder {
     file RADICS_sub_1_SCADA_power.csv;
