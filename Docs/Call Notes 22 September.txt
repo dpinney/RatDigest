@@ -37,3 +37,8 @@ COSIM OUTPUTS?
 - Timestamped readings for all AMI meters, 2 substation transformers (on PDF) total real and reactive power per phase, 23 switches per phase open/closed binary.
 - Must have voltages for all of these.
 - Ceiling is 1 Gig [((3 million / 4) * 1 kB) in megabytes]
+
+SECOND CONVO
+- We can safely configure the input to GridLAB-D, then manipulate the output. We don't need to cosimulate.
+- Tim is building input, output, attack scenarios by Monday morning.
+- David will then pick them up and figure out how to implement them.
