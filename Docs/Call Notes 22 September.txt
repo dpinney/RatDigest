@@ -24,8 +24,9 @@ LATER QUESTIONS
 - Upwork?
 
 TASKS
-OOO Pinney - check model today.
 XXX Pinney - sending invite for 5:15.
+XXX Pinney - check model today.
+OOO Pinney - see if I can get cosim working. 
 
 INPUTS?
 - Switch status, load amounts (pre-recorded attacks), LTC taps later (operator error).
