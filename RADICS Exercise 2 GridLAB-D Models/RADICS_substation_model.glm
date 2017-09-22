@@ -1,0 +1,600 @@
+// Including individual feeder models that are attached to this substation model
+#include "R2_1247_2_t0_1.glm";
+#include "R2_1247_2_t0_5.glm";
+#include "R2_1247_3_t0_3.glm";
+#include "R2_2500_1_t0_4.glm";
+#include "R2_2500_1_t0_2.glm";
+
+clock {
+     timezone EST+5EDT;
+     starttime '2009-07-01 09:00:00';
+     stoptime '2009-07-01 10:00:00';
+}
+#set minimum_timestep=4;
+#set profiler=1;
+#set relax_naming_rules=1;
+#set double_format=%+.12lg
+#set suppress_repeat_messages=1
+
+module tape;
+module climate;
+//module connection; // Commented out because it segfaults.
+module residential {
+     implicit_enduses NONE;
+};
+module powerflow {
+     solver_method NR;
+ //    NR_iteration_limit 50;
+     lu_solver "KLU_x64";
+};
+
+class player {
+     double value;
+};
+
+object climate {
+     name "VA-Washington_DC";
+     tmyfile "VA-Washington_Dc_Reagan_Ap.tmy3";
+     interpolate QUADRATIC;
+};
+
+
+
+// Random outage generation
+module reliability{
+    maximum_event_length 36000;	//Maximum length of events in seconds (manual events are excluded from this limit)
+    report_event_log true;
+}
+
+//object fault_check {				//Fault check object - required to make powerflow properly handle faults
+ //   name fc_oh_slg_x;
+//    check_mode ONCHANGE;			//Fault check mode - should be in ONCHANGE - reliability will change it
+//    eventgen_object ol_slg_x;		//Link to eventgen object - used to handle "unscheduled" events - fuses and switch openings
+//    output_filename ol_slg_x_fault_nodes_out.txt;	//"unsupported node" dump file
+//};
+
+
+object fault_check {
+	name substation_switch_fault_object;
+	check_mode ONCHANGE;
+	eventgen_object event_loadshed1;
+	 output_filename test_connect_case1.txt;
+	 grid_association true;
+	 strictly_radial false;
+}
+
+object eventgen {
+	name event_loadshed1;
+//	max_outage_length 360000;
+//	max_simultaneous_faults 1;
+	fault_type "SW-ABC";
+//	controlled_switch "C1_R2-12-47-2_switch_12";
+//	switch_state 1;
+	manual_outages "C1_R2-12-47-2_ol_switch_50,2009-07-01 12:25:15,2009-07-01 13:30:00";//case 1: "C1_R2-12-47-2_ol_switch_50,2009-07-01 12:25:15,2009-07-01 13:30:00";//case 3: "Feeder3BreakerTie,2009-07-01 07:39:30,2009-07-01 08:30:00"; //case2 :"C1_R2-12-47-2_ol_switch_39,2009-07-01 12:47:32,2009-07-01 13:30:00";   
+}
+// 10 seconds later than planned switch opening
+// Random outage generation
+//module reliability{
+//    maximum_event_length 36000;	//Maximum length of events in seconds (manual events are excluded from this limit)
+//    report_event_log true;
+//}
+
+//object fault_check {				//Fault check object - required to make powerflow properly handle faults
+//    name fc_oh_slg_x;
+//    check_mode ONCHANGE;			//Fault check mode - should be in ONCHANGE - reliability will change it
+//    eventgen_object ol_slg_x;		//Link to eventgen object - used to handle "unscheduled" events - fuses and switch openings
+//    output_filename ol_slg_x_fault_nodes_out.txt;	//"unsupported node" dump file
+//};
+//object fault_check {				
+//    name fc_oh_dlg_x;
+//    check_mode ONCHANGE;			
+//    eventgen_object ol_dlg_x;		
+//    output_filename ol_dlg_x_fault_nodes_out.txt;
+//};
+//object fault_check {				
+//    name fc_oh_tlg;
+//    check_mode ONCHANGE;			
+//    eventgen_object ol_tlg;		
+//    output_filename ol_tlg_fault_nodes_out.txt;	
+//};
+//object fault_check {				
+//    name fc_ol_ll_x;
+//    check_mode ONCHANGE;			
+//    eventgen_object ol_ll_x;		
+//    output_filename ol_ll_x_fault_nodes_out.txt;	
+//};
+//object fault_check {				
+//    name fc_ol_oc1_x;
+//    check_mode ONCHANGE;			
+//    eventgen_object ol_oc1_x;		
+//    output_filename ol_oc1_x_fault_nodes_out.txt;	
+//};
+//object fault_check {				
+//    name fc_ol_oc2_x;
+//    check_mode ONCHANGE;			
+//    eventgen_object ol_oc2_x;		
+//    output_filename ol_oc2_x_fault_nodes_out.txt;	
+//};
+//object fault_check {				
+//    name fc_ol_oc3;
+//    check_mode ONCHANGE;			
+//    eventgen_object ol_oc3;		
+//    output_filename ol_oc3_fault_nodes_out.txt;	
+//};
+
+//object metrics {
+//    name testmetrics;
+//    report_file outage_report.csv;						//Name of the output file
+//    module_metrics_object pwrmetrics;					//Module-specific "metrics" object - a powerflow metrics object is specified here
+//    metrics_of_interest "SAIFI";	//Metrics to output into the report file
+//    customer_group "groupid=C1_Residential_Meter";					//Search criteria for determining "customers" of the system - similar to collectors - this group is both three-phase and triplex meters
+//    metric_interval 720 h; 								//Interval to run metrics - (separate from "simulation-long" metrics) - set to 0 for no metric updates (defaults to no interval updates)
+//    report_interval 720 h;								//Interval to dump metric updates to the output file.
+//}
+//object power_metrics {		//Powerflow metrics object - performs 1366 metric calculations
+//    name pwrmetrics;
+//    base_time_value 1 h;	//Base time value for 1366-metrics.  Defaults to 1 minute
+//}
+// deleted all eventgen objects
+
+//HV1 source
+object node {
+	name HV1Source;
+	phases ABCN;
+	bustype SWING;
+     object player {
+          property voltage_A;
+          loop 100;
+          file V_A.player;
+     };
+     object player {
+          property voltage_B;
+          loop 100;
+          file V_B.player;
+     };
+     object player {
+          property voltage_C;
+          loop 100;
+          file V_C.player;
+     };
+	nominal_voltage 230 kV;  //230 kV wye
+}
+
+//HV2 Source
+object node {
+	name HV2Source;
+	phases ABCN;
+		phases ABCN;
+	bustype SWING;
+     object player {
+          property voltage_A;
+          loop 100;
+          file V_A.player;
+     };
+     object player {
+          property voltage_B;
+          loop 100;
+          file V_B.player;
+     };
+     object player {
+          property voltage_C;
+          loop 100;
+          file V_C.player;
+     };
+	nominal_voltage 230 kV;  //230 kV wye
+}
+
+//Intermediate nodes on HV side
+object node {
+	name HV1Node1;
+	phases ABCN;
+	nominal_voltage 132.79 kV;  //230 kV wye
+}
+object node {
+	name HV2Node1;
+	phases ABCN;
+	nominal_voltage 132.79 kV;  //230 kV wye
+}
+
+//Tie node between both HV buses
+object meter {
+	name HVTieNode;
+	phases ABCN;
+	nominal_voltage 132.79 kV;  //230 kV wye
+}
+
+//Isolation breakers
+object switch {
+	name HV1IsoCB;
+	phases ABCN;
+	groupid sub_switch;
+	from HV1Source;
+	to HV1Node1;
+	status CLOSED;
+}
+object switch {
+	name HV2IsoCB;
+	phases ABCN;
+	groupid sub_switch;
+	from HV2Source;
+	to HV2Node1;
+	status CLOSED;
+}
+
+//Tie breakers to 230 kV Bus
+object switch {
+	name HV1TieSW;
+	phases ABCN;
+	groupid sub_switch;
+	from HV1Node1;
+	to HVTieNode;
+	status CLOSED;
+}
+object switch {
+	name HV2TieSW;
+	phases ABCN;
+	groupid sub_switch;
+	from HV2Node1;
+	to HVTieNode;
+	status CLOSED;
+}
+
+//Transformers high-side nodes
+object node {
+	name Xfmr1HS;
+	phases ABCN;
+	nominal_voltage 132.79 kV;  //230 kV wye
+}
+object node {
+	name Xfmr2HS;
+	phases ABCN;
+	nominal_voltage 132.79 kV;  //230 kV wye
+}
+
+//Disconnect breaker to transformers
+object switch {
+	name HV1Disc;
+	phases ABCN;
+	groupid sub_switch;
+	from HVTieNode;
+	to Xfmr1HS;
+	status CLOSED;
+}
+object switch {
+	name HV2Disc;
+	phases ABCN;
+	groupid sub_switch;
+	from HVTieNode;
+	to Xfmr2HS;
+	status CLOSED;
+}
+
+
+//Transformer configurations
+object transformer_configuration {
+	name Xfmr1Config;
+	connect_type WYE_WYE;
+	install_type PADMOUNT;
+//	power_rating 12.0 MVA;
+    powerA_rating 4.0 MVA;
+    powerB_rating 4.0 MVA;
+    powerC_rating 4.0 MVA;
+	primary_voltage 240 kV;
+	secondary_voltage 13.8 kV;
+	resistance 0.011;
+	reactance 0.018;
+}
+object transformer_configuration {
+	name Xfmr2Config;
+	connect_type WYE_WYE;
+	install_type PADMOUNT;
+	//power_rating 18.0 MVA;
+	powerA_rating 6.0 MVA;
+	powerB_rating 6.0 MVA;
+	powerC_rating 6.0 MVA;
+	primary_voltage 240 kV;
+	secondary_voltage 25 kV;
+	resistance 0.011;
+	reactance 0.018;
+}
+
+//Connecting transformer
+object transformer {
+	name Xfmr1;
+	phases ABCN;
+	from Xfmr1HS;
+	to Xfmr1LS;
+	configuration Xfmr1Config;
+}
+
+object transformer {
+	name Xfmr2;
+	phases ABCN;
+	from Xfmr2HS;
+	to Xfmr2LS;
+	configuration Xfmr2Config;
+}
+
+//13 kV intermediate nodes after transformers
+object node {
+	name Xfmr1LS;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object node {
+	name Xfmr2LS;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+
+//Common node breakers
+object switch {
+	name Xfmr1CommonSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1LS;
+	to Xfmr1Common;
+	status CLOSED;
+}
+object switch {
+	name Xfmr2CommonSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr2LS;
+	to Xfmr2Common;
+	status CLOSED;
+}
+
+//13 kV common nodes after transformers
+object node {
+	name Xfmr1Common;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object node {
+	name Xfmr2Common;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+
+//Low-side bridging switch
+//object switch {
+//    name LVBridgeSW;
+//    phases ABCN;
+//    from Xfmr2Common;
+//    to Xfmr1Common;
+//    status OPEN;
+//}
+
+
+//LV1 Circuits
+//Feeder 1 components, rest of feeder added at C1_R2-12-47-2_node_253 (Feeder1Load)
+object node {
+	name Feeder1Inter;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object switch {
+	name Feeder1BypassSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1Common;
+	to C1_R2-12-47-2_node_253;
+	status OPEN;
+}
+object switch {
+	name Feeder1IsoSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1Common;
+	to Feeder1Inter;
+	status CLOSED;
+}
+object switch {
+	name Feeder1BreakerTie;
+	phases ABCN;
+	groupid sub_switch;
+	from Feeder1Inter;
+	to C1_R2-12-47-2_node_253;
+	status CLOSED;
+}
+
+//Feeder 3 components, rest of feeder added at C3_R2-12-47-3_node_832 (Feeder3Load)
+object node {
+	name Feeder3Inter;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object switch {
+	name Feeder3BypassSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1Common;
+	to C3_R2-12-47-3_node_832;
+	status OPEN;
+}
+object switch {
+	name Feeder3IsoSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1Common;
+	to Feeder3Inter;
+	status CLOSED;
+}
+// Change "Feeder3Load" to from node on voltage C3_R2-12-47-3_node_832 in feeder circuit (separate file)
+object switch {
+	name Feeder3BreakerTie;
+	phases ABCN;
+	groupid sub_switch;
+	from Feeder3Inter;
+	to C3_R2-12-47-3_node_832;
+	status CLOSED;
+}
+//Dummy node when circuit not attached. Comment this object out when feeder attached.
+//object node {
+//	name Feeder3Load;
+//	phases ABCN;
+//	nominal_voltage 7967.43;
+//}
+
+//Feeder 5 components, rest of feeder added at C5_R2-12-47-2_node_253 (Feeder5Load)
+object node {
+	name Feeder5Inter;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object switch {
+	name Feeder5BypassSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1Common;
+	to C5_R2-12-47-2_node_253;
+	status OPEN;
+}
+object switch {
+	name Feeder5IsoSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr1Common;
+	to Feeder5Inter;
+	status CLOSED;
+}
+// Change "Feeder3Load" to from node on voltage regulator in feeder circuit (separate file)
+object switch {
+	name Feeder5BreakerTie;
+	phases ABCN;
+	groupid sub_switch;
+	from Feeder3Inter;
+	to C5_R2-12-47-2_node_253;
+	status CLOSED;
+}
+//Dummy node when circuit not attached. Comment this object out when feeder attached.
+//object node {
+//	name Feeder3Load;
+//	phases ABCN;
+//	nominal_voltage 7967.43;
+//}
+
+
+//LV2 Circuits
+//Feeder 2 components, rest of feeder added at C2_R2-25-00-1_node_324 (Feeder2Load)
+object node {
+	name Feeder2Inter;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object switch {
+	name Feeder2BypassSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr2Common;
+	to C2_R2-25-00-1_node_324;
+	status OPEN;
+}
+object switch {
+	name Feeder2IsoSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr2Common;
+	to Feeder2Inter;
+	status CLOSED;
+}
+// Change "Feeder2Load" to from node on voltage regulator in feeder circuit (separate file)
+object switch {
+	name Feeder2BreakerTie;
+	phases ABCN;
+	groupid sub_switch;
+	from Feeder2Inter;
+	to C2_R2-25-00-1_node_324;
+	status CLOSED;
+}
+//Dummy node when circuit not attached. Comment this object out when feeder attached.
+//object node {
+//	name Feeder2Load;
+//	phases ABCN;
+//	nominal_voltage 7967.43;
+//}
+
+
+//Feeder 4 components, rest of feeder added at C4_R2-25-00-1_node_324 (Feeder4Load)
+object node {
+	name Feeder4Inter;
+	phases ABCN;
+	nominal_voltage 7967.43;
+}
+object switch {
+	name Feeder4BypassSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr2Common;
+	to C4_R2-25-00-1_node_324;
+	status OPEN;
+}
+object switch {
+	name Feeder4IsoSW;
+	phases ABCN;
+	groupid sub_switch;
+	from Xfmr2Common;
+	to Feeder4Inter;
+	status CLOSED;
+}
+// Change "Feeder4Load" to from node on voltage regulator in feeder circuit (separate file)
+object switch {
+	name Feeder4BreakerTie;
+	phases ABCN;
+	groupid sub_switch;
+	from Feeder4Inter;
+	to C4_R2-25-00-1_node_324;
+	status CLOSED;
+}
+//Dummy node when circuit not attached. Comment this object out when feeder attached.
+//object node {
+//	name Feeder4Load;
+//	phases ABCN;
+//	nominal_voltage 7967.43;
+//}
+
+
+object fncs_msg {
+    name GLD1;
+	parent Xfmr1;
+	option "transport:hostname localhost, port 5570";
+    configure RADICS_sub_1_configuration.txt;
+//	subscribe "commit:switch1.phase_A_state <- player/test_msg";
+//	publish "commit:Xfmr1.power_out_real -> power_out_real; 0";
+//	publish "commit:Xfmr1.power_out_imag -> power_out_imag; 0";
+}
+
+object recorder {
+    file RADICS_sub_1_SCADA_power.csv;
+    interval 4;
+    parent Xfmr1;
+    property power_out_real, power_out_imag, power_out_A.real, power_out_A.imag, power_out_B.real, power_out_B.imag, power_out_C.real, power_out_C.imag;
+}
+object recorder {
+    file RADICS_sub_2_SCADA_power.csv;
+    interval 4;
+    parent Xfmr2;
+    property power_out_real, power_out_imag, power_out_A.real, power_out_A.imag, power_out_B.real, power_out_B.imag, power_out_C.real, power_out_C.imag;
+}
+object group_recorder {
+    file RADICS_SCADA_switches_A.csv;
+    // group  "class=switch";
+    group "groupid=sub_switch";
+    interval 4;
+    property phase_A_state;
+}
+object group_recorder {
+    file RADICS_SCADA_switches_B.csv;
+    // group  "class=switch";
+    group "groupid=sub_switch";
+    interval 4;
+    property phase_B_state;
+}
+object group_recorder {
+    file RADICS_SCADA_switches_C.csv;
+    // group  "class=switch";
+    group "groupid=sub_switch";
+    interval 4;
+    property phase_C_state;
+}
