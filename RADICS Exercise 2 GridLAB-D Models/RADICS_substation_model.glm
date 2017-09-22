@@ -165,7 +165,7 @@ object node {
 	name HV2Source;
 	phases ABCN;
 		phases ABCN;
-	bustype SWING;
+	//bustype SWING;
      object player {
           property voltage_A;
           loop 100;
