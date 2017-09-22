@@ -34,7 +34,8 @@ class player {
 
 object climate {
      name "VA-Washington_DC";
-     tmyfile "VA-Washington_Dc_Reagan_Ap.tmy3";
+     //tmyfile "VA-Washington_Dc_Reagan_Ap.tmy3";
+     tmyfile "KY-LEXINGTON.tmy2";
      interpolate QUADRATIC;
 };
 
@@ -63,15 +64,15 @@ module reliability{
 //	 strictly_radial false;
 //}
 
-object eventgen {
-	name event_loadshed1;
+//object eventgen {
+//	name event_loadshed1;
 //	max_outage_length 360000;
 //	max_simultaneous_faults 1;
-	fault_type "SW-ABC";
+//	fault_type "SW-ABC";
 //	controlled_switch "C1_R2-12-47-2_switch_12";
 //	switch_state 1;
-	manual_outages "C1_R2-12-47-2_ol_switch_50,2009-07-01 12:25:15,2009-07-01 13:30:00";//case 1: "C1_R2-12-47-2_ol_switch_50,2009-07-01 12:25:15,2009-07-01 13:30:00";//case 3: "Feeder3BreakerTie,2009-07-01 07:39:30,2009-07-01 08:30:00"; //case2 :"C1_R2-12-47-2_ol_switch_39,2009-07-01 12:47:32,2009-07-01 13:30:00";   
-}
+//	manual_outages "C1_R2-12-47-2_ol_switch_50,2009-07-01 12:25:15,2009-07-01 13:30:00";//case 1: "C1_R2-12-47-2_ol_switch_50,2009-07-01 12:25:15,2009-07-01 13:30:00";//case 3: "Feeder3BreakerTie,2009-07-01 07:39:30,2009-07-01 08:30:00"; //case2 :"C1_R2-12-47-2_ol_switch_39,2009-07-01 12:47:32,2009-07-01 13:30:00";   
+//}
 // 10 seconds later than planned switch opening
 // Random outage generation
 //module reliability{
