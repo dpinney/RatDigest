@@ -8,8 +8,10 @@
 clock {
      timezone EST+5EDT;
      starttime '2009-07-01 09:00:00';
-     stoptime '2009-07-01 10:00:00';
+     stoptime '2009-07-01 09:01:00';
 }
+
+#set pauseat=2009-07-01 09:00:02 EDT;
 #set minimum_timestep=4;
 #set profiler=1;
 #set relax_naming_rules=1;

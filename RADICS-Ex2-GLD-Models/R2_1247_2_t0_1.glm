@@ -30922,18 +30922,6 @@ object house {
            current_fraction 0.400000;
            power_fraction 0.400000;
      };
-     object ZIPload {
-           // Unresponsive load
-           schedule_skew -2944;
-           base_power unresponsive_loads*0.44;
-           heatgain_fraction 0.900;
-           power_pf 1.000;
-           current_pf 1.000;
-           impedance_pf 1.000;
-           impedance_fraction 0.200000;
-           current_fraction 0.400000;
-           power_fraction 0.400000;
-     };
      object waterheater {
           schedule_skew -14096;
           heating_element_capacity 3.5 kW;
@@ -30945,8 +30933,22 @@ object house {
           demand small_4*1.04;
           tank_volume 50;
      };
+};
 
-}
+object ZIPload {
+     // Unresponsive load
+     name COSIM_LOAD_HACK;
+     parent house3_C1_R2-12-47-2_tm_56;
+     schedule_skew -2944;
+     base_power unresponsive_loads*0.44;
+     heatgain_fraction 0.900;
+     power_pf 1.000;
+     current_pf 1.000;
+     impedance_pf 1.000;
+     impedance_fraction 0.200000;
+     current_fraction 0.400000;
+     power_fraction 0.400000;
+};
 
 object triplex_meter {
       phases AS;

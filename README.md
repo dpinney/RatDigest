@@ -1,2 +1,3 @@
 # RatDigest
-Scrambled GridState
+
+It's an anagram of GridState.
