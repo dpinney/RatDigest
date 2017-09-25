@@ -89,10 +89,15 @@ def go(inDict):
 				inFile.readline()
 			# Headers are in line 9.
 			headers = inFile.readline()
-			headList = headers[2:].replace('\n','').split(',')
+			headList = headers[2:].replace('\n','').replace(' ','').split(',')
 			reader = csv.DictReader(inFile, fieldnames=headList)
 			for row in reader:
 				row['device_name'] = fName
+				# TODO: figure out how to use this to get voltage in the regulator output.
+				#w = complex('+701.409+142.17j') # reg power
+				#i = complex('+0.290224-0.0588258j') # reg current
+				## w=iv => v=w/i
+				#print abs(w/i)
 				output.append(row)
 	with open(FILE_UID + '.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
