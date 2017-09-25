@@ -362,7 +362,7 @@ module powerflow {
 object climate {
 	name "climate";
 	interpolate QUADRATIC;
-	//tmyfile "climate.tmy2";
+	tmyfile "climate.tmy2";
 };
 
 object regulator_configuration {
@@ -436,8 +436,24 @@ object regulator {
 	phases ABC;
 	from n650;
 	name Reg1;
-	to n630;
+	to n630_COPY;
 	configuration regulator_configuration_6506321;
+};
+
+object switch {
+	phases ABCN;
+	name NEW_SWITCH;
+	from n630_COPY;
+	to n630;
+	phase_A_state CLOSED;
+	phase_B_state CLOSED;
+	phase_C_state CLOSED;
+};
+
+object node {
+	phases ABCN;
+	name n630_COPY;
+	nominal_voltage 2401.7771;
 };
 
 object node {

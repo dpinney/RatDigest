@@ -13,7 +13,7 @@ exampleInput = {
 		'meterReadInterval':'900',
 		'meterNames':['tm_1','tm_2'],
 		'regulatorNames':['Reg1'],
-		'regulatorReadInterval':'4',
+		'regulatorReadInterval':'4'
 	},
 	'postProc': {
 		'voltAlarmMin':110,
@@ -35,14 +35,14 @@ def go(inDict):
 		"\tstarttime 'INSERT_START_TIME';\n" +\
 		"\tstoptime 'INSERT_STOP_TIME';\n" +\
 		'\t};\n' +\
-		'#set minimum_timestep=INSERT_TIME_STEP;\n'
+		'#set minimum_timestep=INSERT_TIME_STEP;\n\n'
 	allRecorders = ''
-	recorderTemplate = 'object recorder {' +\
+	recorderTemplate = 'object recorder {\n' +\
 		'\tfile INSERT_FILE_NAME.csv;\n' +\
 		'\tinterval INSERT_INTERVAL;\n' +\
 		'\tparent INSERT_PARENT;\n' +\
 		'\tproperty INSERT_PROPERTIES;\n' +\
-		'};\n'
+		'};\n\n'
 	# Modify templates to reflect input parameters.
 	timeTemplate = timeTemplate.replace('INSERT_START_TIME',inDict['preProc']['startTime'])
 	timeTemplate = timeTemplate.replace('INSERT_STOP_TIME',inDict['preProc']['stopTime'])
@@ -84,12 +84,12 @@ def go(inDict):
 	output = []
 	for fName in csvFileNames:
 		with open(fName,'r') as inFile:
-			# Burn the first 8 lines which are just metadata.
+			# Burn the first 8 lines which are metadata we don't need.
 			for x in xrange(8):
 				inFile.readline()
 			# Headers are in line 9.
 			headers = inFile.readline()
-			headList = headers[2:].replace('\n','').replace(' ','').split(',')
+			headList = headers.replace('# ','').replace('\n','').replace(' ','').split(',')
 			reader = csv.DictReader(inFile, fieldnames=headList)
 			for row in reader:
 				row['device_name'] = fName
@@ -98,6 +98,13 @@ def go(inDict):
 				#i = complex('+0.290224-0.0588258j') # reg current
 				## w=iv => v=w/i
 				#print abs(w/i)
+				# Add identifier for Phil Craig
+				if fName.startswith(FILE_UID + '_METER_'):
+					row['identifier'] = 'MS-GetLatestReadings'
+				elif fName.startswith(FILE_UID + '_REG_'):
+					row['identifier'] = 'DNP-SubstationKwH'
+				else:
+					row['identifier'] = 'unknown'
 				output.append(row)
 	with open(FILE_UID + '.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
