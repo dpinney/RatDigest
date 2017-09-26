@@ -2,6 +2,10 @@
 
 It configures and generates cyber-physical simulation results for advanced security reasearch. It's an anagram of GridState.
 
+# GLM Assumptions
+
+- No clock or minimum timestep settings (we add our own).
+
 # Todo (XXX = Complete)
 
 - XXX Add identifier to each payload.
@@ -10,7 +14,7 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX Add meter disconnects via service_status 1/0 attribute.
 - XXX Add regulator tap change actions.
 - XXX Add control messages.
-- OOO Generate alarms with identifiers.
+- XXX Generate alarms with identifiers.
 - OOO Add attacks.
 
 # Identifier Key
@@ -20,12 +24,12 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX Regulator kWh measurement = DNP-SubstationKwH = DNP-SKW
 - XXX Switch CONTROL message = DNP-SubstationBreakerSwitchStatus = DNP-SBSS
 - XXX Regulator CONTROL message = DNP-SubstationVoltageControl = DNP-SVC
-- AMI Meter Alarm = MS-ODEventNotification = MS-ODEN
+- XXX AMI Meter Alarm = MS-ODEventNotification = MS-ODEN
 - Reading From Multiple Meters (Not a total! Only include energy!) = MS-GetLatestReadingsByMeterGroup = MS-GLRBMG
-- More to be identified later...
 
 # Laterbase
 
+- OOO Probability based message drops?
 - OOO Add multimeter reading payloads and identifier.
 - OOO Reg volatge in output via:
 	```
@@ -34,3 +38,6 @@ It configures and generates cyber-physical simulation results for advanced secur
 	# w=iv => v=w/i
 	print abs(w/i)
 	```
+- OOO Add robustness to alarm code.
+- OOO Port to RADICS model.
+
