@@ -445,7 +445,6 @@ object switch {
 	name newSwitch;
 	from n630_copy;
 	to n630;
-	status CLOSED;
 };
 
 object node {
@@ -509,7 +508,7 @@ object triplex_node {
 	name tn_1;
 };
 
-object triplex_meter {
+object triplex_node {
 	phases BS;
 	nominal_voltage 120;
 	name tn_2;
@@ -718,3 +717,22 @@ object ZIPload {
 	groupid fan;
 };
 
+//class player {double value;};
+//
+//object player {
+//	parent newSwitch;
+//	property status;
+//	file switchSchedule.player;
+//};
+//
+//object player {
+//	parent tm_1;
+//	property service_status;
+//	file serviceSchedule.player;
+//};
+//
+//object player {
+//	parent Reg1;
+//	property tap_A;
+//	file regSchedule.player;
+//};
