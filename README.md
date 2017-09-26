@@ -19,7 +19,7 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 # Identifier Key
 
-- XXXLatest AMI Reading = MS-GetLatestReadings = MS-GLR
+- XXX Latest AMI Reading = MS-GetLatestReadings = MS-GLR
 - XXX AMI Meter disconnect command = MS-IniateDisconnectConnect = MS-IDC
 - XXX Regulator kWh measurement = DNP-SubstationKwH = DNP-SKW
 - XXX Switch CONTROL message = DNP-SubstationBreakerSwitchStatus = DNP-SBSS
@@ -46,8 +46,8 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 For the November 2017 exercise 5 types of attacks are considered to be in scope:
 
-XXX PRE - AMI.1: Authorized Employee Issues Unauthorized Mass Remote Disconnect - do meter disconnects in simulation for a long list of meters.
-XXX PRE - DGM.10: Switched Capacitor Banks are Manipulated to Degrade Power Quality - tell a bunch of caps to switch in the simulation.
-XXX POST - Denial of Service Attack - Delete all messages from (device, start, end) tuples.
-XXX POST - AMI.8: False Meter Alarms Overwhelm AMI and Mask Real Alarms - create a bunch of fake alarm messages based on a list of (meter, timestamp) pairs.
-OOO POST - DGM.6: Spoofed Substation Field Devices Influence Automated Responses - "For this attack type, Output_Message_Creation() will artificially modify the connectivity, power or voltage status/readings at specified devices.  A list of spoofed devices will be provided for this attack.  Each item in the list will include a start and end timestamps, a device identifier, a quantity identifier (connection status, power, voltage), and a code indicating the change that should be calculated. (The “codes” will indicate whether a value should be reduced to 0, multiplied by a factor, set to a specific value, etc.  [The ”codes” are to be determined.] Note: The creation of these spoofed messages does not change anything about how the GridLab-D simulation is run.
+- XXX PRE - AMI.1: Authorized Employee Issues Unauthorized Mass Remote Disconnect - do meter disconnects in simulation for a long list of meters.
+- XXX PRE - DGM.10: Switched Capacitor Banks are Manipulated to Degrade Power Quality - tell a bunch of caps to switch in the simulation.
+- XXX POST - Denial of Service Attack - Delete all messages from (device, start, end) tuples.
+- XXX POST - AMI.8: False Meter Alarms Overwhelm AMI and Mask Real Alarms - create a bunch of fake alarm messages based on a list of (meter, timestamp) pairs.
+- OOO POST - DGM.6: Spoofed Substation Field Devices Influence Automated Responses - "For this attack type, Output_Message_Creation() will artificially modify the connectivity, power or voltage status/readings at specified devices.  A list of spoofed devices will be provided for this attack.  Each item in the list will include a start and end timestamps, a device identifier, a quantity identifier (connection status, power, voltage), and a code indicating the change that should be calculated. (The “codes” will indicate whether a value should be reduced to 0, multiplied by a factor, set to a specific value, etc.  [The ”codes” are to be determined.] Note: The creation of these spoofed messages does not change anything about how the GridLab-D simulation is run.
