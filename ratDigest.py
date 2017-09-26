@@ -12,7 +12,7 @@ exampleInput = {
 		'timeStep':'4',
 		'meterReadInterval':'900',
 		'meterNames':['tm_1','tm_2'],
-		'meterVoltageAlarmMin':'110',
+		'meterLoadMap':{'house1':'tm_1','house2':'tm_2'},
 		'regulatorNames':['Reg1'],
 		'regulatorReadInterval':'450',
 		'switchNames':['newSwitch'],
@@ -20,7 +20,7 @@ exampleInput = {
 			{'identifier':'MS-IniateDisconnectConnect','parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:30,0'},
 			{'identifier':'DNP-SubstationBreakerSwitchStatus','parent':'newSwitch','property':'status','schedule':'2017-01-01 12:30,0'},
 			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00,2;2017-01-01 12:15,1;2017-01-01 12:45,2'},
-			{'identifier':'INTENTIONAL_FAULT','parent':'bigload','property':'base_power','schedule':'2017-01-01 12:45,60.0'}
+			{'identifier':'INTENTIONAL_FAULT','parent':'bigload','property':'base_power','schedule':'2017-01-01 12:45,60.0 kW'}
 		],
 	},
 	'postProc': {
@@ -35,11 +35,12 @@ def go(inDict):
 	# PREPROCESS to create and run a new .glm file. #
 	#################################################
 	FILE_UID = 'ratDigest'
+	os.chdir(inDict['glmDirPath'])
 	# Remove old outputs.
-	for fName in os.listdir(inDict['glmDirPath']):
+	for fName in os.listdir('.'):
 		try:
 			if fName.startswith(FILE_UID):
-				os.remove(inDict['glmDirPath'] + fName)
+				os.remove(fName)
 		except:
 			pass # tried but couldn't delete old output.
 	# Templates used to rewrite .glm:
@@ -94,23 +95,23 @@ def go(inDict):
 		tempTemplate = tempTemplate.replace('INSERT_PARENT', action['parent'])
 		tempTemplate = tempTemplate.replace('INSERT_PROPERTIES', action['property'])
 		allPlayers += tempTemplate
-		with open(inDict['glmDirPath'] + fileName + '.player', 'w') as pFile:
+		with open(fileName + '.player', 'w') as pFile:
 			playerContent = action['schedule'].replace(';','\n')
 			pFile.write(playerContent)
 	# Modify and write the new GLM.
-	glmContent = open(inDict['glmDirPath'] + inDict['glmName'],'r').read()
+	glmContent = open(inDict['glmName'],'r').read()
 	glmContent = timeTemplate + glmContent + allPlayers + allRecorders
-	with open(inDict['glmDirPath'] + FILE_UID + '.glm', 'w') as outFile:
+	with open(FILE_UID + '.glm', 'w') as outFile:
 		outFile.write(glmContent)
 	# Run the new GLM.
-	with open(inDict['glmDirPath'] + '/stdout.txt','w') as stdout, open(inDict['glmDirPath'] + '/stderr.txt','w') as stderr:
-		proc = subprocess.Popen(['gridlabd','ratDigest.glm'], cwd=inDict['glmDirPath'], stdout=stdout, stderr=stderr)
+	with open(FILE_UID + '_stdout.txt','w') as stdout, open(FILE_UID + '_stderr.txt','w') as stderr:
+		proc = subprocess.Popen(['gridlabd','ratDigest.glm'], stdout=stdout, stderr=stderr)
 		returnCode = proc.wait()
 	#########################################################
 	# POSTPROCESS to turn the CSV data in to a message list #
 	#########################################################
-	allFileNames = os.listdir(inDict['glmDirPath'])
-	csvFileNames = [inDict['glmDirPath'] + '/' + x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
+	allFileNames = os.listdir('.')
+	csvFileNames = [x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
 	output = []
 	# Put recorder data in output.
 	for fName in csvFileNames:
@@ -144,7 +145,21 @@ def go(inDict):
 				'identifier':action['identifier']
 			}
 			output.append(outMessage)
-	with open(inDict['glmDirPath'] + '/' + FILE_UID + '.json','w') as outFile:
+	# Add alarms to output.
+	with open(FILE_UID + '_stderr.txt') as errFile:
+		lines = errFile.read().split('\n')
+		for x in lines:
+			if "is outside of ANSI standards" in x:
+				out = {}
+				out['identifier'] = 'MS-ODEventNotification'
+				out['type'] = 'voltage alarm'
+				out['location'] = x[x.find(' : ') + 3:x.find(' - ')]
+				magnitude = x[x.find(' = ') + 3 :x.find(' percent')]
+				out['magnitude'] = str(float(magnitude)/100.0 * 120.0)
+				out['timestamp'] = x[10:33]
+				output.append(out)
+	# Write full output.
+	with open(FILE_UID + '.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
 
 if __name__ == '__main__':
