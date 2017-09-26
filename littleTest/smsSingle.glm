@@ -362,7 +362,7 @@ module powerflow {
 object climate {
 	name "climate";
 	interpolate QUADRATIC;
-	tmyfile "climate.tmy2";
+	tmyfile "smsSingleClimate.tmy2";
 };
 
 object regulator_configuration {
@@ -716,23 +716,3 @@ object ZIPload {
 	impedance_fraction 0.733200;
 	groupid fan;
 };
-
-//class player {double value;};
-//
-//object player {
-//	parent newSwitch;
-//	property status;
-//	file switchSchedule.player;
-//};
-//
-//object player {
-//	parent tm_1;
-//	property service_status;
-//	file serviceSchedule.player;
-//};
-//
-//object player {
-//	parent Reg1;
-//	property tap_A;
-//	file regSchedule.player;
-//};

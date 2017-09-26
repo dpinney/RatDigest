@@ -369,7 +369,7 @@ module powerflow {
 object climate {
 	name "climate";
 	interpolate QUADRATIC;
-	tmyfile "climate.tmy2";
+	tmyfile "smsSingleClimate.tmy2";
 };
 
 object regulator_configuration {
@@ -723,42 +723,22 @@ object ZIPload {
 	impedance_fraction 0.733200;
 	groupid fan;
 };
-
 class player {double value;};
 
 object player {
-	parent newSwitch;
-	property status;
-	file switchSchedule.player;
-};
-
-object player {
-	parent tm_1;
-	property service_status;
-	file serviceSchedule.player;
-};
-
-object player {
-	parent Reg1;
-	property tap_A;
-	file regSchedule.player;
-};
-class player {double value;};
-
-object player {
-	file ratDigest_tm_1_service_status.player;
+	file ratDigest_PLAYER_tm_1_service_status.player;
 	parent tm_1;
 	property service_status;
 };
 
 object player {
-	file ratDigest_newSwitch_status.player;
+	file ratDigest_PLAYER_newSwitch_status.player;
 	parent newSwitch;
 	property status;
 };
 
 object player {
-	file ratDigest_Reg1_tap_A.player;
+	file ratDigest_PLAYER_Reg1_tap_A.player;
 	parent Reg1;
 	property tap_A;
 };
@@ -779,7 +759,7 @@ object recorder {
 
 object recorder {
 	file ratDigest_REG_Reg1.csv;
-	interval 4;
+	interval 450;
 	parent Reg1;
 	property power_out_A, power_out_B, power_out_C, current_out_A, current_out_B, current_out_C, tap_A, tap_B, tap_C;
 };
