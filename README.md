@@ -4,13 +4,14 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 # Todo
 XXX Add identifier to each payload.
-OOO Add switches.
-	XXX Switch object in test system.
+XXX Switch object in test system.
+OOO Add switching actions.
+OOO Add meter disconnects via service_status 1/0 attribute.
 OOO Add regulator tap change actions.
 OOO Generate alarms.
 OOO Add attacks.
-OOO Add multimeter reading payloads.
 OOO Additional identifiers.
+OOO Add multimeter reading payloads.
 
 # Identifier Key
 

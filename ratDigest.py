@@ -13,7 +13,8 @@ exampleInput = {
 		'meterReadInterval':'900',
 		'meterNames':['tm_1','tm_2'],
 		'regulatorNames':['Reg1'],
-		'regulatorReadInterval':'4'
+		'regulatorReadInterval':'4',
+		'switchNames':['newSwitch']
 	},
 	'postProc': {
 		'voltAlarmMin':110,
@@ -36,13 +37,13 @@ def go(inDict):
 		"\tstoptime 'INSERT_STOP_TIME';\n" +\
 		'\t};\n' +\
 		'#set minimum_timestep=INSERT_TIME_STEP;\n\n'
-	allRecorders = ''
 	recorderTemplate = 'object recorder {\n' +\
 		'\tfile INSERT_FILE_NAME.csv;\n' +\
 		'\tinterval INSERT_INTERVAL;\n' +\
 		'\tparent INSERT_PARENT;\n' +\
 		'\tproperty INSERT_PROPERTIES;\n' +\
 		'};\n\n'
+	allRecorders = ''
 	# Modify templates to reflect input parameters.
 	timeTemplate = timeTemplate.replace('INSERT_START_TIME',inDict['preProc']['startTime'])
 	timeTemplate = timeTemplate.replace('INSERT_STOP_TIME',inDict['preProc']['stopTime'])
@@ -61,10 +62,18 @@ def go(inDict):
 		tempTemplate = tempTemplate.replace('INSERT_PARENT', regName)
 		tempTemplate = tempTemplate.replace('INSERT_PROPERTIES', 'power_out_A, power_out_B, power_out_C, current_out_A, current_out_B, current_out_C, tap_A, tap_B, tap_C')
 		allRecorders += (tempTemplate)
+	for switchName in inDict['preProc']['switchNames']:
+		tempTemplate = str(recorderTemplate)
+		tempTemplate = tempTemplate.replace('INSERT_FILE_NAME', FILE_UID + '_SWITCH_' + switchName)
+		tempTemplate = tempTemplate.replace('INSERT_INTERVAL', inDict['preProc']['meterReadInterval']) #TODO: switch interval.
+		tempTemplate = tempTemplate.replace('INSERT_PARENT', switchName)
+		tempTemplate = tempTemplate.replace('INSERT_PROPERTIES', 'phase_A_state, phase_B_state, phase_C_state')
+		allRecorders += (tempTemplate)
 	# Remove old outputs.
 	for fName in os.listdir(inDict['glmDirPath']):
 		try:
-			os.remove(fName)
+			if fName.startswith(FILE_UID):
+				os.remove(inDict['glmDirPath'] + fName)
 		except:
 			pass # tried but couldn't delete old output.
 	# Modify and write the new GLM.
