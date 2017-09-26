@@ -13,12 +13,12 @@ exampleInput = {
 		'meterReadInterval':'900',
 		'meterNames':['tm_1','tm_2'],
 		'regulatorNames':['Reg1'],
-		'regulatorReadInterval':'4',
+		'regulatorReadInterval':'450',
 		'switchNames':['newSwitch'],
-		'scheduledEvents':[
-			{'parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:00,1;2017-01-01 12:15,1;2017-01-01 12:30,0;2017-01-01 12:45,0'},
-			{'parent':'newSwitch','property':'status','schedule':'2017-01-01 12:00,1;2017-01-01 12:15,1;2017-01-01 12:30,0;2017-01-01 12:45,0'},
-			{'parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00,2;2017-01-01 12:15,1;2017-01-01 12:30,1;2017-01-01 12:45,2'}
+		'controlActions':[
+			{'identifier':'MS-IniateDisconnectConnect','parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:30,0'},
+			{'identifier':'DNP-SubstationBreakerSwitchStatus','parent':'newSwitch','property':'status','schedule':'2017-01-01 12:30,0'},
+			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00,2;2017-01-01 12:15,1;2017-01-01 12:45,2'}
 		],
 	},
 	'postProc': {
@@ -87,15 +87,15 @@ def go(inDict):
 		tempTemplate = tempTemplate.replace('INSERT_PARENT', switchName)
 		tempTemplate = tempTemplate.replace('INSERT_PROPERTIES', 'phase_A_state, phase_B_state, phase_C_state')
 		allRecorders += tempTemplate
-	for event in inDict['preProc']['scheduledEvents']:
+	for action in inDict['preProc']['controlActions']:
 		tempTemplate = str(playerTemplate)
-		fileName = FILE_UID + '_' + event['parent'] + '_' + event['property']
+		fileName = FILE_UID + '_PLAYER_' + action['parent'] + '_' + action['property']
 		tempTemplate = tempTemplate.replace('INSERT_FILE_NAME', fileName)
-		tempTemplate = tempTemplate.replace('INSERT_PARENT', event['parent'])
-		tempTemplate = tempTemplate.replace('INSERT_PROPERTIES', event['property'])
+		tempTemplate = tempTemplate.replace('INSERT_PARENT', action['parent'])
+		tempTemplate = tempTemplate.replace('INSERT_PROPERTIES', action['property'])
 		allPlayers += tempTemplate
 		with open(inDict['glmDirPath'] + fileName + '.player', 'w') as pFile:
-			playerContent = event['schedule'].replace(';','\n')
+			playerContent = action['schedule'].replace(';','\n')
 			pFile.write(playerContent)
 	# Modify and write the new GLM.
 	glmContent = open(inDict['glmDirPath'] + inDict['glmName'],'r').read()
@@ -112,6 +112,7 @@ def go(inDict):
 	allFileNames = os.listdir('.')
 	csvFileNames = [x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
 	output = []
+	# Put recorder data in output.
 	for fName in csvFileNames:
 		with open(fName,'r') as inFile:
 			# Burn the first 8 lines which are metadata we don't need.
@@ -123,11 +124,6 @@ def go(inDict):
 			reader = csv.DictReader(inFile, fieldnames=headList)
 			for row in reader:
 				row['device_name'] = fName
-				# TODO: figure out how to use this to get voltage in the regulator output.
-				#w = complex('+701.409+142.17j') # reg power
-				#i = complex('+0.290224-0.0588258j') # reg current
-				## w=iv => v=w/i
-				#print abs(w/i)
 				# Add identifier for Phil Craig
 				if fName.startswith(FILE_UID + '_METER_'):
 					row['identifier'] = 'MS-GetLatestReadings'
@@ -136,6 +132,18 @@ def go(inDict):
 				else:
 					row['identifier'] = 'unknown'
 				output.append(row)
+	# Add control messages to output.
+	for action in inDict['preProc']['controlActions']:
+		for event in action['schedule'].split(';'):
+			(timestamp, value) = event.split(',')
+			outMessage = {
+				'device_name':action['parent'],
+				'control_variable':action['property'],
+				'value': value,
+				'timestamp':timestamp,
+				'identifier':action['identifier']
+			}
+			output.append(outMessage)
 	with open(FILE_UID + '.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
 
