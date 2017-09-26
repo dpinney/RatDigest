@@ -42,6 +42,9 @@ def pre(inDict):
 				os.remove(fName)
 		except:
 			pass # tried but couldn't delete old output.
+	# Dump the inputs for our records.
+	with open(FILE_UID + 'Inputs.json', 'w+') as inFile:
+		json.dump(inDict, inFile, indent=4)
 	# Templates used to rewrite .glm:
 	timeTemplate = 'clock {\n' +\
 		'\ttimezone PST+8PDT;\n' +\
