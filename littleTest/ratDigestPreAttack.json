@@ -197,7 +197,15 @@
         "timestamp": "2017-01-01 12:00:00 PST", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
-        "identifier": "unknown"
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
+    }, 
+    {
+        "phase_B_state": "CLOSED", 
+        "phase_C_state": "CLOSED", 
+        "timestamp": "2017-01-01 12:07:30 PST", 
+        "device_name": "ratDigest_SWITCH_newSwitch.csv", 
+        "phase_A_state": "CLOSED", 
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
         "phase_B_state": "CLOSED", 
@@ -205,7 +213,15 @@
         "timestamp": "2017-01-01 12:15:00 PST", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
-        "identifier": "unknown"
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
+    }, 
+    {
+        "phase_B_state": "CLOSED", 
+        "phase_C_state": "CLOSED", 
+        "timestamp": "2017-01-01 12:22:30 PST", 
+        "device_name": "ratDigest_SWITCH_newSwitch.csv", 
+        "phase_A_state": "CLOSED", 
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
         "phase_B_state": "CLOSED", 
@@ -213,7 +229,15 @@
         "timestamp": "2017-01-01 12:30:00 PST", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
-        "identifier": "unknown"
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
+    }, 
+    {
+        "phase_B_state": "CLOSED", 
+        "phase_C_state": "CLOSED", 
+        "timestamp": "2017-01-01 12:37:30 PST", 
+        "device_name": "ratDigest_SWITCH_newSwitch.csv", 
+        "phase_A_state": "CLOSED", 
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
         "phase_B_state": "CLOSED", 
@@ -221,45 +245,53 @@
         "timestamp": "2017-01-01 12:45:00 PST", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
-        "identifier": "unknown"
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
-        "timestamp": "2017-01-01 12:30", 
+        "phase_B_state": "CLOSED", 
+        "phase_C_state": "CLOSED", 
+        "timestamp": "2017-01-01 12:52:30 PST", 
+        "device_name": "ratDigest_SWITCH_newSwitch.csv", 
+        "phase_A_state": "CLOSED", 
+        "identifier": "DNP-SubstationBreakerSwitchStatus"
+    }, 
+    {
+        "timestamp": "2017-01-01 12:30:00 PST", 
         "identifier": "MS-IniateDisconnectConnect", 
         "value": "0", 
         "control_variable": "service_status", 
         "device_name": "tm_1"
     }, 
     {
-        "timestamp": "2017-01-01 12:30", 
-        "identifier": "DNP-SubstationBreakerSwitchStatus", 
+        "timestamp": "2017-01-01 12:30:00 PST", 
+        "identifier": "DNP-SubstationBreakerSwitchWrite", 
         "value": "0", 
         "control_variable": "status", 
         "device_name": "newSwitch"
     }, 
     {
-        "timestamp": "2017-01-01 12:00", 
+        "timestamp": "2017-01-01 12:00:00 PST", 
         "identifier": "DNP-SubstationVoltageControl", 
         "value": "2", 
         "control_variable": "tap_A", 
         "device_name": "Reg1"
     }, 
     {
-        "timestamp": "2017-01-01 12:15", 
+        "timestamp": "2017-01-01 12:15:00 PST", 
         "identifier": "DNP-SubstationVoltageControl", 
         "value": "1", 
         "control_variable": "tap_A", 
         "device_name": "Reg1"
     }, 
     {
-        "timestamp": "2017-01-01 12:45", 
+        "timestamp": "2017-01-01 12:45:00 PST", 
         "identifier": "DNP-SubstationVoltageControl", 
         "value": "2", 
         "control_variable": "tap_A", 
         "device_name": "Reg1"
     }, 
     {
-        "timestamp": "2017-01-01 12:45", 
+        "timestamp": "2017-01-01 12:45:00 PST", 
         "identifier": "INTENTIONAL_FAULT", 
         "value": "60.0 kW", 
         "control_variable": "base_power", 
@@ -269,7 +301,7 @@
         "timestamp": "2017-01-01 12:45:00 PST", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm", 
-        "location": "house2", 
+        "location": "tm_2", 
         "magnitude": "105.6"
     }
 ]

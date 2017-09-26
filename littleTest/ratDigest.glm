@@ -784,7 +784,7 @@ object recorder {
 
 object recorder {
 	file ratDigest_SWITCH_newSwitch.csv;
-	interval 900;
+	interval 450;
 	parent newSwitch;
 	property phase_A_state, phase_B_state, phase_C_state;
 };
