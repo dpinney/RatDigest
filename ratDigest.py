@@ -18,7 +18,7 @@ testInput = {
 		'switchNames':['newSwitch'],
 		'controlActions':[
 			{'identifier':'MS-IniateDisconnectConnect','parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:30:00 PST,0'},
-			{'identifier':'DNP-SubstationBreakerSwitchWrite','parent':'newSwitch','property':'status','schedule':'2017-01-01 12:30:00 PST,0'},
+			{'identifier':'DNP-SubstationBreakerSwitchWrite','parent':'newSwitch','property':'phase_A_state','schedule':'2017-01-01 12:30:00 PST,0'},
 			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00:00 PST,2;2017-01-01 12:15:00 PST,1;2017-01-01 12:45:00 PST,2'},
 			{'identifier':'INTENTIONAL_FAULT','parent':'bigload','property':'base_power','schedule':'2017-01-01 12:45:00 PST,60.0 kW'}
 		],

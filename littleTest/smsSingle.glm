@@ -445,6 +445,7 @@ object switch {
 	name newSwitch;
 	from n630_copy;
 	to n630;
+	operating_mode INDIVIDUAL;
 };
 
 object node {
