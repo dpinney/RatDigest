@@ -452,6 +452,7 @@ object switch {
 	name newSwitch;
 	from n630_copy;
 	to n630;
+	operating_mode INDIVIDUAL;
 };
 
 object node {
@@ -744,9 +745,9 @@ object player {
 };
 
 object player {
-	file ratDigest_PLAYER_newSwitch_status.player;
+	file ratDigest_PLAYER_newSwitch_phase_A_state.player;
 	parent newSwitch;
-	property status;
+	property phase_A_state;
 };
 
 object player {

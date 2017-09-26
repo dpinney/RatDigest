@@ -23,7 +23,7 @@
                 "schedule": "2017-01-01 12:30:00 PST,0"
             }, 
             {
-                "property": "status", 
+                "property": "phase_A_state", 
                 "identifier": "DNP-SubstationBreakerSwitchWrite", 
                 "parent": "newSwitch", 
                 "schedule": "2017-01-01 12:30:00 PST,0"

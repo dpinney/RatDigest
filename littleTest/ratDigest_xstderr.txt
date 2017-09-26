@@ -1,5 +1,5 @@
 WARNING  [INIT] : switch objects may not behave properly under FBS!
 WARNING  [INIT] : Water heater 'demand' property has been deprecated. Please, use 'water_demand'instead. See ticket #798 for details.
-WARNING  [2017-01-01 12:45:00 PST] : last warning message was repeated 1 times
-WARNING  [2017-01-01 12:45:00 PST] : house2 - house:27 is outside of ANSI standards (voltage = 88 percent of nominal 120/240)
-WARNING  [2017-01-01 13:00:00 PST] : last warning message was repeated 71 times
+WARNING  [2017-01-01 12:30:00 PST] : last warning message was repeated 1 times
+WARNING  [2017-01-01 12:30:00 PST] : house1 - house:21 is outside of ANSI standards (voltage = 0 percent of nominal 120/240)
+WARNING  [2017-01-01 13:00:00 PST] : last warning message was repeated 305 times
