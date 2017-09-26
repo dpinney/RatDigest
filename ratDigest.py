@@ -12,18 +12,18 @@ exampleInput = {
 		'timeStep':'4',
 		'meterReadInterval':'900',
 		'meterNames':['tm_1','tm_2'],
+		'meterVoltageAlarmMin':'110',
 		'regulatorNames':['Reg1'],
 		'regulatorReadInterval':'450',
 		'switchNames':['newSwitch'],
 		'controlActions':[
 			{'identifier':'MS-IniateDisconnectConnect','parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:30,0'},
 			{'identifier':'DNP-SubstationBreakerSwitchStatus','parent':'newSwitch','property':'status','schedule':'2017-01-01 12:30,0'},
-			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00,2;2017-01-01 12:15,1;2017-01-01 12:45,2'}
+			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00,2;2017-01-01 12:15,1;2017-01-01 12:45,2'},
+			{'identifier':'INTENTIONAL_FAULT','parent':'bigload','property':'base_power','schedule':'2017-01-01 12:45,60.0'}
 		],
 	},
 	'postProc': {
-		'voltAlarmMin':110,
-		'voltAlarmMax':130,
 		'powerAlarmMin':0,
 		'powerAlarmMax':9000,
 		'probMessageSend':0.99
@@ -103,14 +103,14 @@ def go(inDict):
 	with open(inDict['glmDirPath'] + FILE_UID + '.glm', 'w') as outFile:
 		outFile.write(glmContent)
 	# Run the new GLM.
-	os.chdir(inDict['glmDirPath'])
-	proc = subprocess.Popen(['gridlabd', FILE_UID + '.glm'], stderr=None, stdout=None)
-	proc.wait()
+	with open(inDict['glmDirPath'] + '/stdout.txt','w') as stdout, open(inDict['glmDirPath'] + '/stderr.txt','w') as stderr:
+		proc = subprocess.Popen(['gridlabd','ratDigest.glm'], cwd=inDict['glmDirPath'], stdout=stdout, stderr=stderr)
+		returnCode = proc.wait()
 	#########################################################
 	# POSTPROCESS to turn the CSV data in to a message list #
 	#########################################################
-	allFileNames = os.listdir('.')
-	csvFileNames = [x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
+	allFileNames = os.listdir(inDict['glmDirPath'])
+	csvFileNames = [inDict['glmDirPath'] + '/' + x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
 	output = []
 	# Put recorder data in output.
 	for fName in csvFileNames:
@@ -144,7 +144,7 @@ def go(inDict):
 				'identifier':action['identifier']
 			}
 			output.append(outMessage)
-	with open(FILE_UID + '.json','w') as outFile:
+	with open(inDict['glmDirPath'] + '/' + FILE_UID + '.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
 
 if __name__ == '__main__':

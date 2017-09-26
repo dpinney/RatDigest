@@ -12,6 +12,20 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX Add control messages.
 - OOO Generate alarms with identifiers.
 - OOO Add attacks.
+
+# Identifier Key
+
+- XXXLatest AMI Reading = MS-GetLatestReadings = MS-GLR
+- XXX AMI Meter disconnect command = MS-IniateDisconnectConnect = MS-IDC
+- XXX Regulator kWh measurement = DNP-SubstationKwH = DNP-SKW
+- XXX Switch CONTROL message = DNP-SubstationBreakerSwitchStatus = DNP-SBSS
+- XXX Regulator CONTROL message = DNP-SubstationVoltageControl = DNP-SVC
+- AMI Meter Alarm = MS-ODEventNotification = MS-ODEN
+- Reading From Multiple Meters (Not a total! Only include energy!) = MS-GetLatestReadingsByMeterGroup = MS-GLRBMG
+- More to be identified later...
+
+# Laterbase
+
 - OOO Add multimeter reading payloads and identifier.
 - OOO Reg volatge in output via:
 	```
@@ -20,14 +34,3 @@ It configures and generates cyber-physical simulation results for advanced secur
 	# w=iv => v=w/i
 	print abs(w/i)
 	```
-
-# Identifier Key
-
-- XXXLatest AMI Reading = MS-GetLatestReadings = MS-GLR
-- AMI Meter Alarm = MS-ODEventNotification = MS-ODEN
-- XXX AMI Meter disconnect command = MS-IniateDisconnectConnect = MS-IDC
-- XXX Regulator kWh measurement = DNP-SubstationKwH = DNP-SKW
-- XXX Switch CONTROL message = DNP-SubstationBreakerSwitchStatus = DNP-SBSS
-- XXX Regulator CONTROL message = DNP-SubstationVoltageControl = DNP-SVC
-- Reading From Multiple Meters (Not a total! Only include energy!) = MS-GetLatestReadingsByMeterGroup = MS-GLRBMG
-- More to be identified later...
