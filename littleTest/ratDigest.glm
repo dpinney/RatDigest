@@ -362,7 +362,7 @@ schedule fan1 {
 };
 
 module powerflow {
-	solver_method NR;
+	solver_method FBS;
 	NR_iteration_limit 50;
 };
 
@@ -443,23 +443,21 @@ object regulator {
 	phases ABC;
 	from n650;
 	name Reg1;
-	to n630_COPY;
+	to n630_copy;
 	configuration regulator_configuration_6506321;
 };
 
 object switch {
 	phases ABCN;
-	name NEW_SWITCH;
-	from n630_COPY;
+	name newSwitch;
+	from n630_copy;
 	to n630;
-	phase_A_state CLOSED;
-	phase_B_state CLOSED;
-	phase_C_state CLOSED;
+	status CLOSED;
 };
 
 object node {
 	phases ABCN;
-	name n630_COPY;
+	name n630_copy;
 	nominal_voltage 2401.7771;
 };
 
@@ -746,5 +744,12 @@ object recorder {
 	interval 4;
 	parent Reg1;
 	property power_out_A, power_out_B, power_out_C, current_out_A, current_out_B, current_out_C, tap_A, tap_B, tap_C;
+};
+
+object recorder {
+	file ratDigest_SWITCH_newSwitch.csv;
+	interval 900;
+	parent newSwitch;
+	property phase_A_state, phase_B_state, phase_C_state;
 };
 

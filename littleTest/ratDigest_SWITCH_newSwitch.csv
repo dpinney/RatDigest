@@ -1,0 +1,13 @@
+# file...... ratDigest_SWITCH_newSwitch.csv
+# date...... Tue Sep 26 07:43:55 2017
+# user...... dpinney
+# host...... (null)
+# target.... switch 8
+# trigger... (none)
+# interval.. 900
+# limit..... 0
+# timestamp,phase_A_state, phase_B_state, phase_C_state
+2017-01-01 12:00:00 PST,CLOSED,CLOSED,CLOSED
+2017-01-01 12:15:00 PST,CLOSED,CLOSED,CLOSED
+2017-01-01 12:30:00 PST,CLOSED,CLOSED,CLOSED
+2017-01-01 12:45:00 PST,CLOSED,CLOSED,CLOSED
