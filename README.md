@@ -30,6 +30,7 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 # Laterbase
 
+- OOO Get v4.0 install instructions and breaker open/close info from PNNL.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO 5th attack type.
 - OOO Deal with timezone set manually to PST.
