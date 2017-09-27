@@ -305,40 +305,40 @@
         "magnitude": "0.0"
     }, 
     {
-        "timestamp": "2017-01-01 12:26:55 PST", 
-        "magnitude": "95", 
+        "timestamp": "2017-01-01 12:31:21 PST", 
+        "magnitude": "137", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:23:00 PST", 
-        "magnitude": "95", 
+        "timestamp": "2017-01-01 12:32:12 PST", 
+        "magnitude": "137", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:22:24 PST", 
-        "magnitude": "95", 
+        "timestamp": "2017-01-01 12:20:39 PST", 
+        "magnitude": "137", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:22:38 PST", 
-        "magnitude": "95", 
+        "timestamp": "2017-01-01 12:32:43 PST", 
+        "magnitude": "137", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:29:18 PST", 
-        "magnitude": "95", 
+        "timestamp": "2017-01-01 12:22:18 PST", 
+        "magnitude": "137", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
