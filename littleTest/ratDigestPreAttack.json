@@ -10,8 +10,18 @@
         "measured_real_power": "+5740.96"
     }, 
     {
-        "measured_real_energy": "+605.447", 
-        "timestamp": "2017-01-01 12:15:00 PST", 
+        "measured_real_energy": "+584.584", 
+        "timestamp": "2017-01-01 12:13:20 PST", 
+        "measured_voltage_2": "+121.489-0.00348654d", 
+        "measured_reactive_power": "+159.033", 
+        "device_name": "ratDigest_METER_tm_1.csv", 
+        "measured_voltage_1": "+121.392+0.0039666d", 
+        "identifier": "MS-GetLatestReadings", 
+        "measured_real_power": "+751.086"
+    }, 
+    {
+        "measured_real_energy": "+747.903", 
+        "timestamp": "2017-01-01 12:26:40 PST", 
         "measured_voltage_2": "+120.728-0.00546561d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "ratDigest_METER_tm_1.csv", 
@@ -21,7 +31,7 @@
     }, 
     {
         "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:30:00 PST", 
+        "timestamp": "2017-01-01 12:40:00 PST", 
         "measured_voltage_2": "+0+0d", 
         "measured_reactive_power": "+0", 
         "device_name": "ratDigest_METER_tm_1.csv", 
@@ -31,7 +41,7 @@
     }, 
     {
         "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:45:00 PST", 
+        "timestamp": "2017-01-01 12:53:20 PST", 
         "measured_voltage_2": "+0+0d", 
         "measured_reactive_power": "+0", 
         "device_name": "ratDigest_METER_tm_1.csv", 
@@ -50,8 +60,18 @@
         "measured_real_power": "+5672.06"
     }, 
     {
-        "measured_real_energy": "+603.774", 
-        "timestamp": "2017-01-01 12:15:00 PST", 
+        "measured_real_energy": "+583.123", 
+        "timestamp": "2017-01-01 12:13:20 PST", 
+        "measured_voltage_2": "+120.739-120.004d", 
+        "measured_reactive_power": "+157.364", 
+        "device_name": "ratDigest_METER_tm_2.csv", 
+        "measured_voltage_1": "+120.642-119.996d", 
+        "identifier": "MS-GetLatestReadings", 
+        "measured_real_power": "+743.422"
+    }, 
+    {
+        "measured_real_energy": "+746.23", 
+        "timestamp": "2017-01-01 12:26:40 PST", 
         "measured_voltage_2": "+120.728-120.005d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "ratDigest_METER_tm_2.csv", 
@@ -60,20 +80,20 @@
         "measured_real_power": "+732.631"
     }, 
     {
-        "measured_real_energy": "+786.931", 
-        "timestamp": "2017-01-01 12:30:00 PST", 
-        "measured_voltage_2": "+120.728-120.005d", 
-        "measured_reactive_power": "+144.981", 
+        "measured_real_energy": "+904.765", 
+        "timestamp": "2017-01-01 12:40:00 PST", 
+        "measured_voltage_2": "+120.724-120.006d", 
+        "measured_reactive_power": "+130.948", 
         "device_name": "ratDigest_METER_tm_2.csv", 
-        "measured_voltage_1": "+120.655-119.995d", 
+        "measured_voltage_1": "+120.667-119.994d", 
         "identifier": "MS-GetLatestReadings", 
-        "measured_real_power": "+732.631"
+        "measured_real_power": "+689.92"
     }, 
     {
-        "measured_real_energy": "+962.259", 
-        "timestamp": "2017-01-01 12:45:00 PST", 
+        "measured_real_energy": "+8606.65", 
+        "timestamp": "2017-01-01 12:53:20 PST", 
         "measured_voltage_2": "+126.41-118.223d", 
-        "measured_reactive_power": "+104.704", 
+        "measured_reactive_power": "+104.729", 
         "device_name": "ratDigest_METER_tm_2.csv", 
         "measured_voltage_1": "+105.586-122.911d", 
         "identifier": "MS-GetLatestReadings", 

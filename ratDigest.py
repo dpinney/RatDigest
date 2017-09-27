@@ -10,7 +10,7 @@ testInput = {
 		'startTime':'2017-01-01 12:00:00',
 		'stopTime':'2017-01-01 13:00:00',
 		'simTimeStep':'4',
-		'meterReadInterval':'900',
+		'meterReadInterval':'800',
 		'meterNames':['tm_1','tm_2'],
 		'meterLoadMap':{'house1':'tm_1','house2':'tm_2'},
 		'regulatorNames':['Reg1'],

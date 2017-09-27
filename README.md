@@ -35,14 +35,14 @@ It configures and generates cyber-physical simulation results for advanced secur
 - OOO 5th attack type.
 - OOO Deal with timezone set manually to PST.
 - OOO Don't os.chdir.
+- OOO Additional alarms?
 - OOO Some device names are filenames, others are just GLD device names. Standardize.
 - OOO Switch read interval different from regulator?
-- OOO Probability based message drops?
-- OOO Additional alarms?
 - OOO Add multimeter reading payloads and identifier.
 - OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
 - OOO Add robustness to alarm code.
 - OOO Port to RADICS model.
+- OOO Probability based message drops?
 
 # Attack List
 

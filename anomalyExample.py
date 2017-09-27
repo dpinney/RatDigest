@@ -5,27 +5,27 @@ from datetime import datetime, timedelta
 FNAME = './littleTest/ratDigestPostAttack.json'
 
 messages = json.load(open(FNAME))
-# pp(messages)
+pp(messages)
 
 m3 = messages[3]
-# print m3
-# print m3.keys()
-# print m3['timestamp']
+print m3
+print m3.keys()
+print m3['timestamp']
 
 meterList = [x for x in messages if x.get('identifier','') == 'MS-GetLatestReadings']
-# pp(meterList)
+pp(meterList)
 
 voltage1 = [x['measured_voltage_1'] for x in messages if 'measured_voltage_1' in x]
 voltage2 = [x['measured_voltage_2'] for x in messages if 'measured_voltage_2' in x]
 allVolts = voltage1 + voltage2
-# print allVolts
+print allVolts
 
 compVoltages = [complex(x.replace('d','j')) for x in allVolts]
-# print compVoltages
+print compVoltages
 
 voltageMags = [abs(x) for x in compVoltages]
 meanVoltage = sum(voltageMags)/len(voltageMags)
-# print meanVoltage
+print meanVoltage
 
 def voltMag(m):
 	if 'measured_voltage_1' in m:
@@ -36,7 +36,7 @@ def voltMag(m):
 		return None
 
 overVolts = [m for m in messages if voltMag(m) > meanVoltage]
-# pp(overVolts)
+pp(overVolts)
 
 def parseDate(d):
 	return datetime.strptime(d[0:-4], '%Y-%m-%d %H:%M:%S')

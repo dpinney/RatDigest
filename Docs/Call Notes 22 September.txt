@@ -1,0 +1,40 @@
+ATTENDEES
+David Pinney, Tim Heidel
+
+DATE
+22 September 2017
+
+NOTES
+- Money? 7.5 M from DARPA RADICS and 3 M REACT
+- Timeline? 2016-2019
+- Cost Share NRECA put up? NRECA puts in about 4 million in cost share.
+- Partners? BlackByte, CMU, NRECA, In2lytics, Cigital
+
+QUESTIONS
+- Resource for now is David Pinney.
+- Where is the GridLAB-D file and does it work at all? In the repo now.
+
+LATER QUESTIONS
+- Can someone take my meeting planning tasks off my hands?
+- Upwork?
+
+TASKS
+XXX Pinney - sending invite for 5:15.
+XXX Pinney - check model today.
+XXX Pinney - see if I can get cosim working. Reading works fine, writing needs some work.
+
+INPUTS?
+- Switch status, load amounts (pre-recorded attacks), LTC taps later (operator error).
+- How long does the GLD sim run is it 1 month at second resolution? Yes, this is Tim's ideal.
+- GLD attacks: remove meter from system, change load behind meter to zero, spoofed meter (GLD output doesn't change, values in output file do change), switch changes.
+
+COSIM OUTPUTS?
+- Timestamped readings for all AMI meters, 2 substation transformers (on PDF) total real and reactive power per phase, 23 switches per phase open/closed binary.
+- Must have voltages for all of these.
+- Ceiling is 1 Gig [((3 million / 4) * 1 kB) in megabytes]
+
+SECOND CONVO
+- We can safely configure the input to GridLAB-D, then manipulate the output. We don't need to cosimulate.
+- Tim is building input, output, attack scenarios by Monday morning.
+- David will then pick them up and figure out how to implement them.
+- 4 attack types agreed on with PNNL, they did 5, we'll do 7.

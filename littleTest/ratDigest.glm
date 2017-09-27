@@ -764,14 +764,14 @@ object player {
 
 object recorder {
 	file ratDigest_METER_tm_1.csv;
-	interval 900;
+	interval 800;
 	parent tm_1;
 	property measured_real_energy, measured_real_power, measured_reactive_power, measured_voltage_1, measured_voltage_2;
 };
 
 object recorder {
 	file ratDigest_METER_tm_2.csv;
-	interval 900;
+	interval 800;
 	parent tm_2;
 	property measured_real_energy, measured_real_power, measured_reactive_power, measured_voltage_1, measured_voltage_2;
 };

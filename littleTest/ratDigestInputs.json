@@ -8,7 +8,7 @@
             "newSwitch"
         ], 
         "stopTime": "2017-01-01 13:00:00", 
-        "meterReadInterval": "900", 
+        "meterReadInterval": "800", 
         "startTime": "2017-01-01 12:00:00", 
         "simTimeStep": "4", 
         "regulatorReadInterval": "450", 
