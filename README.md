@@ -32,6 +32,17 @@ It configures and generates cyber-physical simulation results for advanced secur
 - OOO Add robustness to alarm code.
 - OOO Port to RADICS model.
 - OOO Support timezones other than PST.
+- OOO get phil craig types tonight
+- OOO delete breaker read interval issue
+- OOO switch it UTC - weather?
+- OOO device name
+- OOO inputs from file instead of in the source
+- OOO control action generator - frequency based
+- OOO multimessage - 1 request with list of meters in group, 1 response with list of values
+- OOO pairs of request/response
+- OOO run on an intermediate sized system, 2 groups
+- OOO 14 hours of runtime
+
 
 # Identifier Key
 
