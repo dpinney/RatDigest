@@ -1,27 +1,27 @@
 [
     {
         "measured_real_energy": "+0", 
-        "timestamp": "2017-01-01 12:00:00 PST", 
-        "measured_voltage_2": "+121.088-0.0408467d", 
-        "measured_reactive_power": "+187.213", 
+        "timestamp": "2017-01-01 12:00:00 UTC", 
+        "measured_voltage_2": "+120.34-0.0408658d", 
+        "measured_reactive_power": "+185.252", 
         "device_name": "ratDigest_METER_tm_1.csv", 
-        "measured_voltage_1": "+121.031-0.0293242d", 
+        "measured_voltage_1": "+120.284-0.0293061d", 
         "identifier": "MS-GetLatestReadings", 
-        "measured_real_power": "+5740.96"
+        "measured_real_power": "+5672.06"
     }, 
     {
-        "measured_real_energy": "+584.584", 
-        "timestamp": "2017-01-01 12:13:20 PST", 
-        "measured_voltage_2": "+121.489-0.00348654d", 
-        "measured_reactive_power": "+159.033", 
+        "measured_real_energy": "+583.123", 
+        "timestamp": "2017-01-01 12:13:20 UTC", 
+        "measured_voltage_2": "+120.739-0.00350315d", 
+        "measured_reactive_power": "+157.364", 
         "device_name": "ratDigest_METER_tm_1.csv", 
-        "measured_voltage_1": "+121.392+0.0039666d", 
+        "measured_voltage_1": "+120.642+0.00398093d", 
         "identifier": "MS-GetLatestReadings", 
-        "measured_real_power": "+751.086"
+        "measured_real_power": "+743.422"
     }, 
     {
-        "measured_real_energy": "+747.903", 
-        "timestamp": "2017-01-01 12:26:40 PST", 
+        "measured_real_energy": "+746.23", 
+        "timestamp": "2017-01-01 12:26:40 UTC", 
         "measured_voltage_2": "+120.728-0.00546561d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "ratDigest_METER_tm_1.csv", 
@@ -30,28 +30,28 @@
         "measured_real_power": "+732.631"
     }, 
     {
-        "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:40:00 PST", 
-        "measured_voltage_2": "+0+0d", 
-        "measured_reactive_power": "+0", 
+        "measured_real_energy": "+904.765", 
+        "timestamp": "2017-01-01 12:40:00 UTC", 
+        "measured_voltage_2": "+120.724-0.00626049d", 
+        "measured_reactive_power": "+130.948", 
         "device_name": "ratDigest_METER_tm_1.csv", 
-        "measured_voltage_1": "+0+0d", 
+        "measured_voltage_1": "+120.667+0.00560645d", 
         "identifier": "MS-GetLatestReadings", 
-        "measured_real_power": "+0"
+        "measured_real_power": "+689.92"
     }, 
     {
-        "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:53:20 PST", 
-        "measured_voltage_2": "+0+0d", 
-        "measured_reactive_power": "+0", 
+        "measured_real_energy": "+1058.08", 
+        "timestamp": "2017-01-01 12:53:20 UTC", 
+        "measured_voltage_2": "+120.724-0.00626049d", 
+        "measured_reactive_power": "+130.948", 
         "device_name": "ratDigest_METER_tm_1.csv", 
-        "measured_voltage_1": "+0+0d", 
+        "measured_voltage_1": "+120.667+0.00560645d", 
         "identifier": "MS-GetLatestReadings", 
-        "measured_real_power": "+0"
+        "measured_real_power": "+689.92"
     }, 
     {
         "measured_real_energy": "+0", 
-        "timestamp": "2017-01-01 12:00:00 PST", 
+        "timestamp": "2017-01-01 12:00:00 UTC", 
         "measured_voltage_2": "+120.34-120.041d", 
         "measured_reactive_power": "+185.252", 
         "device_name": "ratDigest_METER_tm_2.csv", 
@@ -61,7 +61,7 @@
     }, 
     {
         "measured_real_energy": "+583.123", 
-        "timestamp": "2017-01-01 12:13:20 PST", 
+        "timestamp": "2017-01-01 12:13:20 UTC", 
         "measured_voltage_2": "+120.739-120.004d", 
         "measured_reactive_power": "+157.364", 
         "device_name": "ratDigest_METER_tm_2.csv", 
@@ -71,7 +71,7 @@
     }, 
     {
         "measured_real_energy": "+746.23", 
-        "timestamp": "2017-01-01 12:26:40 PST", 
+        "timestamp": "2017-01-01 12:26:40 UTC", 
         "measured_voltage_2": "+120.728-120.005d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "ratDigest_METER_tm_2.csv", 
@@ -81,7 +81,7 @@
     }, 
     {
         "measured_real_energy": "+904.765", 
-        "timestamp": "2017-01-01 12:40:00 PST", 
+        "timestamp": "2017-01-01 12:40:00 UTC", 
         "measured_voltage_2": "+120.724-120.006d", 
         "measured_reactive_power": "+130.948", 
         "device_name": "ratDigest_METER_tm_2.csv", 
@@ -90,49 +90,49 @@
         "measured_real_power": "+689.92"
     }, 
     {
-        "measured_real_energy": "+8606.65", 
-        "timestamp": "2017-01-01 12:53:20 PST", 
-        "measured_voltage_2": "+126.41-118.223d", 
-        "measured_reactive_power": "+104.729", 
+        "measured_real_energy": "+1058.08", 
+        "timestamp": "2017-01-01 12:53:20 UTC", 
+        "measured_voltage_2": "+120.724-120.006d", 
+        "measured_reactive_power": "+130.948", 
         "device_name": "ratDigest_METER_tm_2.csv", 
-        "measured_voltage_1": "+105.586-122.911d", 
+        "measured_voltage_1": "+120.667-119.994d", 
         "identifier": "MS-GetLatestReadings", 
-        "measured_real_power": "+55039.6"
+        "measured_real_power": "+689.92"
     }, 
     {
-        "power_out_A": "+5773.05+202.72j", 
+        "power_out_A": "+5703.77+200.571j", 
         "power_out_B": "+5703.77+200.571j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:00:00 PST", 
+        "timestamp": "2017-01-01 12:00:00 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
         "current_out_B": "-1.2519-2.00238j", 
         "current_out_C": "+0+0j", 
-        "tap_A": "2", 
-        "current_out_A": "+2.37398-0.0833622j"
+        "tap_A": "1", 
+        "current_out_A": "+2.36006-0.0829907j"
     }, 
     {
-        "power_out_A": "+872.022+199.589j", 
+        "power_out_A": "+863.057+197.477j", 
         "power_out_B": "+863.057+197.477j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:07:30 PST", 
+        "timestamp": "2017-01-01 12:07:30 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
         "current_out_B": "-0.249318-0.26841j", 
         "current_out_C": "+0+0j", 
-        "tap_A": "2", 
-        "current_out_A": "+0.358591-0.0820746j"
+        "tap_A": "1", 
+        "current_out_A": "+0.357109-0.0817103j"
     }, 
     {
-        "power_out_A": "+744.181+156.221j", 
+        "power_out_A": "+744.182+156.221j", 
         "power_out_B": "+744.182+156.221j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:15:00 PST", 
+        "timestamp": "2017-01-01 12:15:00 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -146,7 +146,7 @@
         "power_out_B": "+744.182+156.221j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:22:30 PST", 
+        "timestamp": "2017-01-01 12:22:30 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -156,65 +156,65 @@
         "current_out_A": "+0.307922-0.0646399j"
     }, 
     {
-        "power_out_A": "+0+0j", 
+        "power_out_A": "+744.181+156.221j", 
         "power_out_B": "+744.182+156.221j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:30:00 PST", 
+        "timestamp": "2017-01-01 12:30:00 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
         "current_out_B": "-0.209941-0.234348j", 
         "current_out_C": "+0+0j", 
         "tap_A": "1", 
-        "current_out_A": "+0+0j"
+        "current_out_A": "+0.307922-0.0646399j"
     }, 
     {
-        "power_out_A": "+0+0j", 
+        "power_out_A": "+701.409+142.17j", 
         "power_out_B": "+701.409+142.17j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:37:30 PST", 
+        "timestamp": "2017-01-01 12:37:30 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
         "current_out_B": "-0.196056-0.221928j", 
         "current_out_C": "+0+0j", 
         "tap_A": "1", 
-        "current_out_A": "+0+0j"
+        "current_out_A": "+0.290224-0.0588258j"
     }, 
     {
-        "power_out_A": "+0+0j", 
-        "power_out_B": "+62809.3+3299.74j", 
+        "power_out_A": "+701.409+142.17j", 
+        "power_out_B": "+701.409+142.17j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:45:00 PST", 
+        "timestamp": "2017-01-01 12:45:00 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
-        "current_out_B": "-14.1768-21.8243j", 
+        "current_out_B": "-0.196056-0.221928j", 
         "current_out_C": "+0+0j", 
-        "tap_A": "2", 
-        "current_out_A": "+0+0j"
+        "tap_A": "1", 
+        "current_out_A": "+0.290224-0.0588258j"
     }, 
     {
-        "power_out_A": "+0+0j", 
-        "power_out_B": "+62809.3+3299.77j", 
+        "power_out_A": "+701.409+142.17j", 
+        "power_out_B": "+701.409+142.17j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH", 
-        "timestamp": "2017-01-01 12:52:30 PST", 
+        "timestamp": "2017-01-01 12:52:30 UTC", 
         "device_name": "ratDigest_REG_Reg1.csv", 
         "tap_C": "1", 
         "tap_B": "1", 
-        "current_out_B": "-14.1768-21.8243j", 
+        "current_out_B": "-0.196056-0.221928j", 
         "current_out_C": "+0+0j", 
-        "tap_A": "2", 
-        "current_out_A": "+0+0j"
+        "tap_A": "1", 
+        "current_out_A": "+0.290224-0.0588258j"
     }, 
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:00:00 PST", 
+        "timestamp": "2017-01-01 12:00:00 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
@@ -222,7 +222,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:07:30 PST", 
+        "timestamp": "2017-01-01 12:07:30 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
@@ -230,7 +230,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:15:00 PST", 
+        "timestamp": "2017-01-01 12:15:00 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
@@ -238,7 +238,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:22:30 PST", 
+        "timestamp": "2017-01-01 12:22:30 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
@@ -246,33 +246,33 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:30:00 PST", 
+        "timestamp": "2017-01-01 12:30:00 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
-        "phase_A_state": "OPEN", 
+        "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:37:30 PST", 
+        "timestamp": "2017-01-01 12:37:30 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
-        "phase_A_state": "OPEN", 
+        "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:45:00 PST", 
+        "timestamp": "2017-01-01 12:45:00 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
-        "phase_A_state": "OPEN", 
+        "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:52:30 PST", 
+        "timestamp": "2017-01-01 12:52:30 UTC", 
         "device_name": "ratDigest_SWITCH_newSwitch.csv", 
-        "phase_A_state": "OPEN", 
+        "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus"
     }, 
     {
@@ -318,47 +318,40 @@
         "device_name": "bigload"
     }, 
     {
-        "timestamp": "2017-01-01 12:30:00 PST", 
-        "identifier": "MS-ODEventNotification", 
-        "type": "voltage alarm", 
-        "location": "tm_1", 
-        "magnitude": "0.0"
-    }, 
-    {
-        "timestamp": "2017-01-01 12:32:05 PST", 
-        "magnitude": "102", 
+        "timestamp": "2017-01-01 12:25:51 PST", 
+        "magnitude": "95", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:37:36 PST", 
-        "magnitude": "102", 
+        "timestamp": "2017-01-01 12:39:12 PST", 
+        "magnitude": "95", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:28:53 PST", 
-        "magnitude": "102", 
+        "timestamp": "2017-01-01 12:36:31 PST", 
+        "magnitude": "95", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:20:23 PST", 
-        "magnitude": "102", 
+        "timestamp": "2017-01-01 12:39:31 PST", 
+        "magnitude": "95", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:39:42 PST", 
-        "magnitude": "102", 
+        "timestamp": "2017-01-01 12:32:33 PST", 
+        "magnitude": "95", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 

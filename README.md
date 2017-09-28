@@ -6,7 +6,7 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 - No clock or minimum timestep settings (we add our own).
 
-# Todo (XXX = Complete)
+# v1.0.0 Todo List (XXX = Complete)
 
 - XXX Add identifier to each payload.
 - XXX Switch object in test system.
@@ -16,6 +16,22 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX Add control messages.
 - XXX Generate alarms with identifiers.
 - XXX Add attacks.
+
+# v2.0.0 Todo List
+
+- XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
+- XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
+- OOO Probability based message drops?
+- OOO 5th attack type.
+- OOO Add a 'restored' message post AMI alarm.
+- OOO Additional alarms?
+- OOO Some device names are filenames, others are just GLD device names. Standardize.
+- OOO Switch read interval different from regulator?
+- OOO Add multimeter reading payloads and identifier.
+- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
+- OOO Add robustness to alarm code.
+- OOO Port to RADICS model.
+- OOO Support timezones other than PST.
 
 # Identifier Key
 
@@ -27,22 +43,6 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX AMI Meter Alarm = MS-ODEventNotification = MS-ODEN
 - XXX Breaker open/close = DNP-SubstationBreakerSwitchWrite
 - OOO Reading From Multiple Meters (Not a total! Only include energy!) = MS-GetLatestReadingsByMeterGroup = MS-GLRBMG
-
-# Laterbase
-
-- XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
-- OOO Add a 'restored' message post AMI alarm.
-- OOO 5th attack type.
-- OOO Deal with timezone set manually to PST.
-- OOO Don't os.chdir.
-- OOO Additional alarms?
-- OOO Some device names are filenames, others are just GLD device names. Standardize.
-- OOO Switch read interval different from regulator?
-- OOO Add multimeter reading payloads and identifier.
-- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
-- OOO Add robustness to alarm code.
-- OOO Port to RADICS model.
-- OOO Probability based message drops?
 
 # Attack List
 
