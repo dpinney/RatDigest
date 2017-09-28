@@ -19,8 +19,8 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 # v2.0.0 Todo List
 
-- XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
 - XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
+- XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
 - OOO Probability based message drops?
 - OOO 5th attack type.
 - OOO Add a 'restored' message post AMI alarm.
