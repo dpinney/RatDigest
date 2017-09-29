@@ -21,28 +21,26 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 - XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
 - XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
+- XXX Switch read interval different from regulator? Not an issue.
+- XXX Amount of wall clock time available to run exercise sims: 14 hours.
+- bug with not checking device ID when doing dos attack.
+- OOO Some device names are filenames, others are just GLD device names. Standardize.
 - OOO Probability based message drops?
 - OOO 5th attack type.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO Additional alarms?
-- OOO Some device names are filenames, others are just GLD device names. Standardize.
-- OOO Switch read interval different from regulator?
 - OOO Add multimeter reading payloads and identifier.
 - OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
-- OOO Add robustness to alarm code.
-- OOO Port to RADICS model.
-- OOO Support timezones other than PST.
-- OOO get phil craig types tonight
-- OOO delete breaker read interval issue
-- OOO switch it UTC - weather?
-- OOO device name
-- OOO inputs from file instead of in the source
-- OOO control action generator - frequency based
+- OOO Different alarm approach that doesn't rely on stderr.
+- OOO Switch timezone from PST to UTC. What about climate?
+- OOO get phil craig types tonight. Asked him 10 AM 29 Sep.
+- OOO device name not filename.
+- OOO inputs from file instead of in the source?
+- OOO need a control action generator with frequency basis.
 - OOO multimessage - 1 request with list of meters in group, 1 response with list of values
-- OOO pairs of request/response
-- OOO run on an intermediate sized system, 2 groups
-- OOO 14 hours of runtime
-
+- OOO pairs of request/response - see Request Response Exchange.JPG
+- OOO run on an intermediate sized system, 2 meter groups
+- OOO Port to RADICS model.
 
 # Identifier Key
 
