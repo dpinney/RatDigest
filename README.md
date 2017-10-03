@@ -31,7 +31,7 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX bug with not checking device ID when doing dos attack. Fixed.
 - XXX Get phil craig types tonight (29 Sep). Added to docs.
 - XXX Install instructions.
-- OOO Switch timezone from PST to UTC. What about climate?
+- XXX Switch timezone from PST to UTC. What about climate? Did proper timezone support. Codes in tzinfo.txt.
 - OOO pairs of request/response - see Request Response Exchange.JPG
 - OOO Probability based message drops?
 - OOO 5th attack type.

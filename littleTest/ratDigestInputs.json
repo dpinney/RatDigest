@@ -1,64 +1,65 @@
 {
     "preProc": {
-        "meterNames": [
-            "tm_1", 
-            "tm_2"
-        ], 
-        "switchNames": [
-            "newSwitch"
-        ], 
-        "stopTime": "2017-01-01 13:00:00", 
-        "meterReadInterval": "800", 
-        "startTime": "2017-01-01 12:00:00", 
-        "simTimeStep": "4", 
-        "regulatorReadInterval": "450", 
-        "regulatorNames": [
-            "Reg1"
-        ], 
         "controlActions": [
             {
                 "property": "service_status", 
                 "identifier": "MS-IniateDisconnectConnect", 
                 "parent": "tm_1", 
-                "schedule": "2017-01-01 12:30:00 PST,0"
+                "schedule": "2017-01-01 12:30:00,0"
             }, 
             {
                 "property": "phase_A_state", 
                 "identifier": "DNP-SubstationBreakerSwitchWrite", 
                 "parent": "newSwitch", 
-                "schedule": "2017-01-01 12:30:00 PST,0"
+                "schedule": "2017-01-01 12:30:00,0"
             }, 
             {
                 "property": "tap_A", 
                 "identifier": "DNP-SubstationVoltageControl", 
                 "parent": "Reg1", 
-                "schedule": "2017-01-01 12:00:00 PST,2;2017-01-01 12:15:00 PST,1;2017-01-01 12:45:00 PST,2"
+                "schedule": "2017-01-01 12:00:00,2;2017-01-01 12:15:00,1;2017-01-01 12:45:00,2"
             }, 
             {
                 "property": "base_power", 
                 "identifier": "INTENTIONAL_FAULT", 
                 "parent": "bigload", 
-                "schedule": "2017-01-01 12:45:00 PST,60.0 kW"
+                "schedule": "2017-01-01 12:45:00,60.0 kW"
             }
         ], 
+        "meterReadInterval": "800", 
+        "startTime": "2017-01-01 12:00:00", 
+        "simTimeStep": "4", 
+        "timezone": "PST+8PDT", 
         "meterLoadMap": {
             "house2": "tm_2", 
             "house1": "tm_1"
-        }
+        }, 
+        "meterNames": [
+            "tm_1", 
+            "tm_2"
+        ], 
+        "regulatorNames": [
+            "Reg1"
+        ], 
+        "switchNames": [
+            "newSwitch"
+        ], 
+        "stopTime": "2017-01-01 13:00:00", 
+        "regulatorReadInterval": "450"
     }, 
     "glmName": "smsSingle.glm", 
     "postProc": {
         "dosList": [
             {
-                "start": "2017-01-01 12:07:00 PST", 
-                "end": "2017-01-01 12:16:00 PST", 
+                "start": "2017-01-01 12:07:00", 
+                "end": "2017-01-01 12:16:00", 
                 "device_name": "Reg1"
             }
         ], 
         "spoofList": [
             {
-                "end": "2017-01-01 12:40:00 PST", 
-                "start": "2017-01-01 12:20:00 PST", 
+                "end": "2017-01-01 12:40:00", 
+                "start": "2017-01-01 12:20:00", 
                 "quantity": 5, 
                 "type": "alarm", 
                 "device_name": "tm_2"

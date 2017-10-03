@@ -9,6 +9,7 @@ testInput = {
 	'preProc': {
 		'startTime':'2017-01-01 12:00:00',
 		'stopTime':'2017-01-01 13:00:00',
+		'timezone':'PST+8PDT',
 		'simTimeStep':'4',
 		'meterReadInterval':'800',
 		'meterNames':['tm_1','tm_2'],
@@ -17,15 +18,15 @@ testInput = {
 		'regulatorReadInterval':'450',
 		'switchNames':['newSwitch'],
 		'controlActions':[
-			{'identifier':'MS-IniateDisconnectConnect','parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:30:00 PST,0'},
-			{'identifier':'DNP-SubstationBreakerSwitchWrite','parent':'newSwitch','property':'phase_A_state','schedule':'2017-01-01 12:30:00 PST,0'},
-			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00:00 PST,2;2017-01-01 12:15:00 PST,1;2017-01-01 12:45:00 PST,2'},
-			{'identifier':'INTENTIONAL_FAULT','parent':'bigload','property':'base_power','schedule':'2017-01-01 12:45:00 PST,60.0 kW'}
+			{'identifier':'MS-IniateDisconnectConnect','parent':'tm_1','property':'service_status','schedule':'2017-01-01 12:30:00,0'},
+			{'identifier':'DNP-SubstationBreakerSwitchWrite','parent':'newSwitch','property':'phase_A_state','schedule':'2017-01-01 12:30:00,0'},
+			{'identifier':'DNP-SubstationVoltageControl','parent':'Reg1','property':'tap_A','schedule':'2017-01-01 12:00:00,2;2017-01-01 12:15:00,1;2017-01-01 12:45:00,2'},
+			{'identifier':'INTENTIONAL_FAULT','parent':'bigload','property':'base_power','schedule':'2017-01-01 12:45:00,60.0 kW'}
 		],
 	},
 	'postProc': {
-		'dosList':[{'device_name':'Reg1','start':'2017-01-01 12:07:00 PST','end':'2017-01-01 12:16:00 PST'}],
-		'spoofList':[{'device_name':'tm_2','type':'alarm','quantity':5,'start':'2017-01-01 12:20:00 PST','end':'2017-01-01 12:40:00 PST'}],
+		'dosList':[{'device_name':'Reg1','start':'2017-01-01 12:07:00','end':'2017-01-01 12:16:00'}],
+		'spoofList':[{'device_name':'tm_2','type':'alarm','quantity':5,'start':'2017-01-01 12:20:00','end':'2017-01-01 12:40:00'}],
 	}
 }
 
@@ -52,7 +53,7 @@ def pre(inDict):
 		json.dump(inDict, inFile, indent=4)
 	# Templates used to rewrite .glm:
 	timeTemplate = 'clock {\n' +\
-		'\ttimezone PST+8PDT;\n' +\
+		'\ttimezone INSERT_TIMEZONE;\n' +\
 		"\tstarttime 'INSERT_START_TIME';\n" +\
 		"\tstoptime 'INSERT_STOP_TIME';\n" +\
 		'\t};\n' +\
@@ -74,6 +75,7 @@ def pre(inDict):
 	timeTemplate = timeTemplate.replace('INSERT_START_TIME',inDict['preProc']['startTime'])
 	timeTemplate = timeTemplate.replace('INSERT_STOP_TIME',inDict['preProc']['stopTime'])
 	timeTemplate = timeTemplate.replace('INSERT_TIME_STEP',inDict['preProc']['simTimeStep'])
+	timeTemplate = timeTemplate.replace('INSERT_TIMEZONE',inDict['preProc']['timezone'])
 	for meterName in inDict['preProc']['meterNames']:
 		tempTemplate = str(recorderTemplate)
 		tempTemplate = tempTemplate.replace('INSERT_FILE_NAME', FILE_UID + '_METER_' + meterName)
@@ -154,7 +156,7 @@ def pre(inDict):
 				'device_name':action['parent'],
 				'control_variable':action['property'],
 				'value': value,
-				'timestamp':timestamp,
+				'timestamp':timestamp + ' ' + inDict['preProc']['timezone'][0:3],
 				'identifier':action['identifier']
 			}
 			output.append(outMessage)
@@ -179,6 +181,8 @@ def pre(inDict):
 	return output
 
 def post(inDict, messages):
+	# Short timezone coda for things missing it.
+	tzc = ' ' + inDict['preProc']['timezone'][0:3]
 	# Helper function for timestamp parsing.
 	def tParse(timeString):
 		return datetime.strptime(timeString[0:-4], '%Y-%m-%d %H:%M:%S')
@@ -190,8 +194,8 @@ def post(inDict, messages):
 		return start + timedelta(seconds=random_second)
 	# Perform DOS attacks by dropping messages.
 	for attack in inDict['postProc']['dosList']:
-		start = tParse(attack['start'])
-		end = tParse(attack['end'])
+		start = tParse(attack['start'] + tzc)
+		end = tParse(attack['end'] + tzc)
 		for message in messages:
 			time = tParse(message['timestamp'])
 			if start < time < end:
@@ -199,8 +203,8 @@ def post(inDict, messages):
 					del message
 	# Perform spoof attacks.
 	for attack in inDict['postProc']['spoofList']:
-		start = tParse(attack['start'])
-		end = tParse(attack['end'])
+		start = tParse(attack['start'] + tzc)
+		end = tParse(attack['end'] + tzc)
 		if attack['type'] is 'alarm':
 			underVoltage = random.randrange(95.0,110.0)
 			overVoltage = random.randrange(130.0,145.0)
@@ -216,7 +220,7 @@ def post(inDict, messages):
 			raise Exception('No type specified for attack ' + str(attack))
 		for count in xrange(attack['quantity']):
 			fakeMessage = dict(messageTemplate)
-			fakeMessage['timestamp'] = datetime.strftime(randomDate(start, end), '%Y-%m-%d %H:%M:%S PST')
+			fakeMessage['timestamp'] = datetime.strftime(randomDate(start, end), '%Y-%m-%d %H:%M:%S' + tzc)
 			messages.append(fakeMessage)
 	# Dump results.
 	with open('ratDigestPostAttack.json','w') as outFile:
