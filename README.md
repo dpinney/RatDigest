@@ -34,12 +34,13 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Switch timezone from PST to UTC. What about climate? Did proper timezone support. Codes in tzinfo.txt.
 - XXX Pairs of request/response - see Request Response Exchange.JPG
 - XXX Probability based message drops? One drop rate for all responses to read messages added.
-- OOO Different alarm approach that doesn't rely on stderr and will scale to all alarm types.
-- OOO Run on an intermediate sized system, 2 meter groups.
+- XXX Different alarm approach that doesn't rely on stderr and will scale to all alarm types. Added but not utilized.
+- XXX Run on an intermediate sized system, 2 meter groups (lessLittleTest).
 
 # v3 Todo List
-- OOO Add a 'restored' message post AMI alarm.
 - OOO Alarms on power and not just voltage?
+- OOO Port voltage alarm code to new method.
+- OOO Add a 'restored' message post AMI alarm.
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
