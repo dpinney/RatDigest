@@ -29,6 +29,11 @@ testInput = {
 	}
 }
 
+def dig(inputDict):
+	''' Run full ratDigest workflow.'''
+	out = pre(inputDict)
+	attackedOut = post(inputDict, out)
+
 def pre(inDict):
 	#############################
 	# Generate a new .glm file. #
@@ -220,5 +225,4 @@ def post(inDict, messages):
 	return messages
 
 if __name__ == '__main__':
-	out = pre(testInput)
-	attackedOut = post(testInput, out)
+	dig(testInput)

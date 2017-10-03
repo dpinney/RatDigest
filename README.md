@@ -2,6 +2,10 @@
 
 It configures and generates cyber-physical simulation results for advanced security reasearch. It's an anagram of GridState.
 
+# Install Instructions.
+
+Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/files/?source=navbar) and Python [2.7.x](https://www.python.org/downloads/). Then download this repository and run `python ratDigest.py` to run the tests.
+
 # GLM Assumptions
 
 - No clock or minimum timestep settings (we add our own).
@@ -23,26 +27,26 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
 - XXX Switch read interval different from regulator? Not an issue.
 - XXX Amount of wall clock time available to run exercise sims: 14 hours.
-- XXX bug with not checking device ID when doing dos attack.
-- XXX Some device names are filenames, others are just GLD device names. Standardize.
-- XXX get phil craig types tonight. Added to docs.
+- XXX Some device names are filenames, others are just GLD device names. Standardized.
+- XXX bug with not checking device ID when doing dos attack. Fixed.
+- XXX Get phil craig types tonight (29 Sep). Added to docs.
+- XXX Install instructions.
 - OOO Switch timezone from PST to UTC. What about climate?
-- OOO Charts.
-- OOO Install instructions.
+- OOO pairs of request/response - see Request Response Exchange.JPG
 - OOO Probability based message drops?
 - OOO 5th attack type.
+- OOO Different alarm approach that doesn't rely on stderr.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO Additional alarms?
-- OOO Add multimeter reading payloads and identifier.
-- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
-- OOO Different alarm approach that doesn't rely on stderr.
-- OOO device name not filename.
-- OOO inputs from file instead of in the source?
+- OOO run on an intermediate sized system, 2 meter groups.
+- OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values
+
+# v3.0.0 Todo List
+- OOO Charts.
 - OOO need a control action generator with frequency basis.
-- OOO multimessage - 1 request with list of meters in group, 1 response with list of values
-- OOO pairs of request/response - see Request Response Exchange.JPG
-- OOO run on an intermediate sized system, 2 meter groups
-- OOO Port to RADICS model.
+- OOO Port to the final RADICS model.
+- OOO inputs from file instead of in the source?
+- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
 
 # Identifier Key
 
