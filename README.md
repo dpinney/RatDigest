@@ -26,22 +26,23 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
 - XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
 - XXX Switch read interval different from regulator? Not an issue.
-- XXX Amount of wall clock time available to run exercise sims: 14 hours.
+- XXX Amount of wall clock time available to run exercise sims? 14 hours.
 - XXX Some device names are filenames, others are just GLD device names. Standardized.
-- XXX bug with not checking device ID when doing dos attack. Fixed.
-- XXX Get phil craig types tonight (29 Sep). Added to docs.
-- XXX Install instructions.
+- XXX Bug with not checking device ID when doing dos attack. Fixed.
+- XXX Get phil craig types. Added to docs.
+- XXX Install instructions. Added to readme.
 - XXX Switch timezone from PST to UTC. What about climate? Did proper timezone support. Codes in tzinfo.txt.
-- XXX pairs of request/response - see Request Response Exchange.JPG
-- OOO Probability based message drops?
-- OOO Different alarm approach that doesn't rely on stderr.
-- OOO Add a 'restored' message post AMI alarm.
-- OOO Additional alarms?
+- XXX Pairs of request/response - see Request Response Exchange.JPG
+- XXX Probability based message drops? One drop rate for all responses to read messages added.
+- OOO Different alarm approach that doesn't rely on stderr and will scale to all alarm types.
 - OOO run on an intermediate sized system, 2 meter groups.
-- OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 
 # v3 Todo List
+- OOO Add a 'restored' message post AMI alarm.
+- OOO Alarms on power and not just voltage?
+- OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 - OOO Add responses to control messages?
+- OOO Add probability drops to control message actions?
 - OOO 5th attack type.
 - OOO Charts in anomalyExample.
 - OOO need a control action generator with frequency basis.

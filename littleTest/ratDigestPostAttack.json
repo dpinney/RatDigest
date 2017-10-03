@@ -70,14 +70,6 @@
         "device_name": "newSwitch"
     }, 
     {
-        "phase_B_state": "CLOSED", 
-        "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:37:31 PST", 
-        "device_name": "newSwitch", 
-        "phase_A_state": "OPEN", 
-        "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
-    }, 
-    {
         "timestamp": "2017-01-01 12:45:00 PST", 
         "identifier": "DNP-SubstationBreakerSwitchStatus", 
         "device_name": "newSwitch"
@@ -187,40 +179,40 @@
         "magnitude": "0.0"
     }, 
     {
-        "timestamp": "2017-01-01 12:33:10 PST", 
-        "magnitude": "108", 
+        "timestamp": "2017-01-01 12:25:07 PST", 
+        "magnitude": "99", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:29:29 PST", 
-        "magnitude": "108", 
+        "timestamp": "2017-01-01 12:38:31 PST", 
+        "magnitude": "99", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:34:32 PST", 
-        "magnitude": "108", 
+        "timestamp": "2017-01-01 12:37:09 PST", 
+        "magnitude": "99", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:34:26 PST", 
-        "magnitude": "108", 
+        "timestamp": "2017-01-01 12:20:12 PST", 
+        "magnitude": "99", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:38:04 PST", 
-        "magnitude": "108", 
+        "timestamp": "2017-01-01 12:26:10 PST", 
+        "magnitude": "99", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 

@@ -762,6 +762,20 @@ object player {
 	property base_power;
 };
 
+object group_recorder {
+	file ratDigest_ALARMVOLTS_1.csv;
+	group class=triplex_meter;
+	interval 60;
+	property measured_voltage_1;
+};
+
+object group_recorder {
+	file ratDigest_ALARMVOLTS_2.csv;
+	group class=triplex_meter;
+	interval 60;
+	property measured_voltage_2;
+};
+
 object recorder {
 	file ratDigest_METER_tm_1.csv;
 	interval 800;

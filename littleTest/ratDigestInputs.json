@@ -26,7 +26,7 @@
                 "schedule": "2017-01-01 12:45:00,60.0 kW"
             }
         ], 
-        "responseDropProbability": 0.01, 
+        "responseDropProbability": 0, 
         "meterReadInterval": "800", 
         "startTime": "2017-01-01 12:00:00", 
         "simTimeStep": "4", 
@@ -47,6 +47,7 @@
         ], 
         "responseLatencySeconds": 3, 
         "stopTime": "2017-01-01 13:00:00", 
+        "alarmMinIntervalSeconds": "60", 
         "regulatorReadInterval": "450"
     }, 
     "glmName": "smsSingle.glm", 

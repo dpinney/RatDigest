@@ -70,14 +70,6 @@
         "device_name": "newSwitch"
     }, 
     {
-        "phase_B_state": "CLOSED", 
-        "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:37:31 PST", 
-        "device_name": "newSwitch", 
-        "phase_A_state": "OPEN", 
-        "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
-    }, 
-    {
         "timestamp": "2017-01-01 12:45:00 PST", 
         "identifier": "DNP-SubstationBreakerSwitchStatus", 
         "device_name": "newSwitch"
