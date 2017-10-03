@@ -50,18 +50,18 @@
     "postProc": {
         "dosList": [
             {
-                "device": "Reg1", 
                 "start": "2017-01-01 12:07:00 PST", 
-                "end": "2017-01-01 12:16:00 PST"
+                "end": "2017-01-01 12:16:00 PST", 
+                "device_name": "Reg1"
             }
         ], 
-        "floodList": [
+        "spoofList": [
             {
-                "device": "tm_2", 
-                "start": "2017-01-01 12:20:00 PST", 
                 "end": "2017-01-01 12:40:00 PST", 
+                "start": "2017-01-01 12:20:00 PST", 
+                "quantity": 5, 
                 "type": "alarm", 
-                "quantity": 5
+                "device_name": "tm_2"
             }
         ]
     }, 

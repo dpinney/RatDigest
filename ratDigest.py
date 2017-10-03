@@ -24,8 +24,8 @@ testInput = {
 		],
 	},
 	'postProc': {
-		'dosList':[{'device':'Reg1','start':'2017-01-01 12:07:00 PST','end':'2017-01-01 12:16:00 PST'}],
-		'floodList':[{'device':'tm_2','type':'alarm','quantity':5,'start':'2017-01-01 12:20:00 PST','end':'2017-01-01 12:40:00 PST'}],
+		'dosList':[{'device_name':'Reg1','start':'2017-01-01 12:07:00 PST','end':'2017-01-01 12:16:00 PST'}],
+		'spoofList':[{'device_name':'tm_2','type':'alarm','quantity':5,'start':'2017-01-01 12:20:00 PST','end':'2017-01-01 12:40:00 PST'}],
 	}
 }
 
@@ -126,7 +126,11 @@ def pre(inDict):
 			headList = headers.replace('# ','').replace('\n','').replace(' ','').split(',')
 			reader = csv.DictReader(inFile, fieldnames=headList)
 			for row in reader:
-				row['device_name'] = fName
+				row['device_name'] = fName\
+					.replace('.csv','')\
+					.replace('ratDigest_METER_','')\
+					.replace('ratDigest_REG_','')\
+					.replace('ratDigest_SWITCH_','')
 				# Add identifier for Phil Craig
 				if fName.startswith(FILE_UID + '_METER_'):
 					row['identifier'] = 'MS-GetLatestReadings'
@@ -186,9 +190,10 @@ def post(inDict, messages):
 		for message in messages:
 			time = tParse(message['timestamp'])
 			if start < time < end:
-				del message
-	# Perform flood attacks.
-	for attack in inDict['postProc']['floodList']:
+				if attack['device_name'] == message.get('device_name',''):
+					del message
+	# Perform spoof attacks.
+	for attack in inDict['postProc']['spoofList']:
 		start = tParse(attack['start'])
 		end = tParse(attack['end'])
 		if attack['type'] is 'alarm':
@@ -198,7 +203,7 @@ def post(inDict, messages):
 			messageTemplate = {
 				'identifier': 'MS-ODEventNotification', 
 				'type': 'voltage alarm', 
-				'location': attack['device'], 
+				'location': attack['device_name'], 
 				'magnitude': str(magnitude),
 				'fake':'True'
 			}

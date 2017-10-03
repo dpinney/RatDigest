@@ -23,8 +23,12 @@ It configures and generates cyber-physical simulation results for advanced secur
 - XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
 - XXX Switch read interval different from regulator? Not an issue.
 - XXX Amount of wall clock time available to run exercise sims: 14 hours.
-- bug with not checking device ID when doing dos attack.
-- OOO Some device names are filenames, others are just GLD device names. Standardize.
+- XXX bug with not checking device ID when doing dos attack.
+- XXX Some device names are filenames, others are just GLD device names. Standardize.
+- XXX get phil craig types tonight. Added to docs.
+- OOO Switch timezone from PST to UTC. What about climate?
+- OOO Charts.
+- OOO Install instructions.
 - OOO Probability based message drops?
 - OOO 5th attack type.
 - OOO Add a 'restored' message post AMI alarm.
@@ -32,8 +36,6 @@ It configures and generates cyber-physical simulation results for advanced secur
 - OOO Add multimeter reading payloads and identifier.
 - OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
 - OOO Different alarm approach that doesn't rely on stderr.
-- OOO Switch timezone from PST to UTC. What about climate?
-- OOO get phil craig types tonight. Asked him 10 AM 29 Sep.
 - OOO device name not filename.
 - OOO inputs from file instead of in the source?
 - OOO need a control action generator with frequency basis.
