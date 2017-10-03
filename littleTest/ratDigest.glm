@@ -763,14 +763,14 @@ object player {
 };
 
 object group_recorder {
-	file ratDigest_ALARMVOLTS_1.csv;
+	file ratDigest_ALARM_VOLTS_1.csv;
 	group class=triplex_meter;
 	interval 60;
 	property measured_voltage_1;
 };
 
 object group_recorder {
-	file ratDigest_ALARMVOLTS_2.csv;
+	file ratDigest_ALARM_VOLTS_2.csv;
 	group class=triplex_meter;
 	interval 60;
 	property measured_voltage_2;

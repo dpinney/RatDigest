@@ -35,7 +35,7 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Pairs of request/response - see Request Response Exchange.JPG
 - XXX Probability based message drops? One drop rate for all responses to read messages added.
 - OOO Different alarm approach that doesn't rely on stderr and will scale to all alarm types.
-- OOO run on an intermediate sized system, 2 meter groups.
+- OOO Run on an intermediate sized system, 2 meter groups.
 
 # v3 Todo List
 - OOO Add a 'restored' message post AMI alarm.

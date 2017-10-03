@@ -87,7 +87,7 @@ def pre(inDict):
 	timeTemplate = timeTemplate.replace('INSERT_TIMEZONE',inDict['preProc']['timezone'])
 	for phase in ['1','2']:
 		tempTemplate = str(alarmTemplate)
-		tempTemplate = tempTemplate.replace('INSERT_FILE_NAME', FILE_UID + '_ALARMVOLTS_' + phase)
+		tempTemplate = tempTemplate.replace('INSERT_FILE_NAME', FILE_UID + '_ALARM_VOLTS_' + phase)
 		tempTemplate = tempTemplate.replace('INSERT_INTERVAL', inDict['preProc']['alarmMinIntervalSeconds'])
 		tempTemplate = tempTemplate.replace('INSERT_GROUP', 'class=triplex_meter')
 		tempTemplate = tempTemplate.replace('INSERT_PROPERTY', 'measured_voltage_' + phase)
@@ -136,8 +136,9 @@ def pre(inDict):
 	# Turn GridLAB-D output CSV data in to a message list #
 	#######################################################
 	allFileNames = os.listdir('.')
-	csvFileNames = [x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv') and x.find('_ALARMVOLTS_') == -1]
+	csvFileNames = [x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
 	output = []
+	alarmReads = []
 	# Put recorder data in output.
 	for fName in csvFileNames:
 		with open(fName,'r') as inFile:
@@ -149,6 +150,10 @@ def pre(inDict):
 			headList = headers.replace('# ','').replace('\n','').replace(' ','').split(',')
 			reader = csv.DictReader(inFile, fieldnames=headList)
 			for message in reader:
+				# Pull out alarms for separate alarm process.
+				if fName.startswith(FILE_UID + '_ALARM_'):
+					alarmReads.append(message)
+					continue
 				# Process response.
 				message['device_name'] = fName\
 					.replace('.csv','')\
@@ -178,7 +183,7 @@ def pre(inDict):
 				# Write request message.
 				output.append(reqMessage)
 				# Drop some responses with the given probability.
-				if random.random() < inDict['preProc']['responseDropProbability']:
+				if random.random() > inDict['preProc']['responseDropProbability']:
 					output.append(message)
 	# Add control messages to output.
 	for action in inDict['preProc']['controlActions']:
@@ -206,20 +211,16 @@ def pre(inDict):
 				out['magnitude'] = str(float(magnitude)/100.0 * 120.0)
 				out['timestamp'] = x[10:33]
 				output.append(out)
-	# # More alarms.
-	# alarmFiles = [x for x in allFileNames if x.startswith(FILE_UID) and x.find('_ALARMVOLTS_') != -1]
-	# for fName in alarmFiles:
-	# 	with open(fName,'r') as inFile:
-	# 		# Burn the first 8 lines which are metadata we don't need.
-	# 		for x in xrange(8):
-	# 			inFile.readline()
-	# 		# Headers are in line 9.
-	# 		headers = inFile.readline()
-	# 		headList = headers.replace('# ','').replace('\n','').replace(' ','').split(',')
-	# 		reader = csv.DictReader(inFile, fieldnames=headList)
-	# 		for message in reader:
-	# 			print message
-	# 			# Process response.
+	# More alarms.
+	alarmVolts = {'1':{},'2':{}}
+	for phase in alarmVolts.keys():
+		for meterName in inDict['preProc']['meterNames']:
+			if alarmVolts[phase].get(meterName, '') == '':
+				alarmVolts[phase][meterName] = []
+			for message in alarmReads:
+				alarmVolts[phase][meterName].append((message['timestamp'],message[meterName]))
+	# TODO: calculate alarms.
+	pass
 	# Write full output.
 	with open(FILE_UID + 'PreAttack.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
