@@ -161,11 +161,11 @@ def pre(inDict):
 				stampPlusLatency = tParse(message['timestamp']) + timedelta(seconds=latencySeconds)
 				message['timestamp'] = str(stampPlusLatency) + ' ' + inDict['preProc']['timezone'][0:3]
 				message['identifier'] = ident + '-RESPONSE'
-				# Drop some responses with the given probability.
-				pass
-				# Write request and response messages.
+				# Write request message.
 				output.append(reqMessage)
-				output.append(message)
+				# Drop some responses with the given probability.
+				if random.random() < inDict['preProc']['responseDropProbability']:
+					output.append(message)
 	# Add control messages to output.
 	for action in inDict['preProc']['controlActions']:
 		for event in action['schedule'].split(';'):

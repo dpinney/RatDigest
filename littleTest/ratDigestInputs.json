@@ -26,6 +26,7 @@
                 "schedule": "2017-01-01 12:45:00,60.0 kW"
             }
         ], 
+        "responseDropProbability": 0.01, 
         "meterReadInterval": "800", 
         "startTime": "2017-01-01 12:00:00", 
         "simTimeStep": "4", 
