@@ -4,13 +4,13 @@ It configures and generates cyber-physical simulation results for advanced secur
 
 # Install Instructions.
 
-Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/files/?source=navbar) and Python [2.7.x](https://www.python.org/downloads/). Then download this repository and run `python ratDigest.py` to run the tests.
+Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/files/?source=navbar) and Python [2.7.x](https://www.python.org/downloads/). Then download the ratDigest [release you want](https://github.com/dpinney/RatDigest/releases), unzip it, and run `python ratDigest.py` to run the tests.
 
 # GLM Assumptions
 
 - No clock or minimum timestep settings (we add our own).
 
-# v1.0.0 Todo List (XXX = Complete)
+# v1 Todo List (XXX = Complete)
 
 - XXX Add identifier to each payload.
 - XXX Switch object in test system.
@@ -21,7 +21,7 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Generate alarms with identifiers.
 - XXX Add attacks.
 
-# v2.0.0 Todo List
+# v2 Todo List
 
 - XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
 - XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
@@ -32,17 +32,18 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Get phil craig types tonight (29 Sep). Added to docs.
 - XXX Install instructions.
 - XXX Switch timezone from PST to UTC. What about climate? Did proper timezone support. Codes in tzinfo.txt.
-- OOO pairs of request/response - see Request Response Exchange.JPG
+- XXX pairs of request/response - see Request Response Exchange.JPG
 - OOO Probability based message drops?
-- OOO 5th attack type.
 - OOO Different alarm approach that doesn't rely on stderr.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO Additional alarms?
 - OOO run on an intermediate sized system, 2 meter groups.
-- OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values
+- OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 
-# v3.0.0 Todo List
-- OOO Charts.
+# v3 Todo List
+- OOO Add responses to control messages?
+- OOO 5th attack type.
+- OOO Charts in anomalyExample.
 - OOO need a control action generator with frequency basis.
 - OOO Port to the final RADICS model.
 - OOO inputs from file instead of in the source?

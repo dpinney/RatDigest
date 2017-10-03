@@ -11,6 +11,8 @@ testInput = {
 		'stopTime':'2017-01-01 13:00:00',
 		'timezone':'PST+8PDT',
 		'simTimeStep':'4',
+		'responseLatencySeconds':3,
+		'responseDropProbability':0,
 		'meterReadInterval':'800',
 		'meterNames':['tm_1','tm_2'],
 		'meterLoadMap':{'house1':'tm_1','house2':'tm_2'},
@@ -132,22 +134,38 @@ def pre(inDict):
 			headers = inFile.readline()
 			headList = headers.replace('# ','').replace('\n','').replace(' ','').split(',')
 			reader = csv.DictReader(inFile, fieldnames=headList)
-			for row in reader:
-				row['device_name'] = fName\
+			for message in reader:
+				# Process response.
+				message['device_name'] = fName\
 					.replace('.csv','')\
 					.replace('ratDigest_METER_','')\
 					.replace('ratDigest_REG_','')\
 					.replace('ratDigest_SWITCH_','')
-				# Add identifier for Phil Craig
+				# Add identifiers for Phil Craig.
 				if fName.startswith(FILE_UID + '_METER_'):
-					row['identifier'] = 'MS-GetLatestReadings'
+					ident = 'MS-GetLatestReadings'
 				elif fName.startswith(FILE_UID + '_REG_'):
-					row['identifier'] = 'DNP-SubstationKwH'
+					ident = 'DNP-SubstationKwH'
 				elif fName.startswith(FILE_UID + '_SWITCH_'):
-					row['identifier'] = 'DNP-SubstationBreakerSwitchStatus'
+					ident = 'DNP-SubstationBreakerSwitchStatus'
 				else:
-					row['identifier'] = 'unknown'
-				output.append(row)
+					ident = 'unknown'
+				# Also make a message to request each reading.
+				reqMessage = {
+					'device_name':message['device_name'],
+					'timestamp':message['timestamp'],
+					'identifier': ident
+				}
+				# Add a little latency to the responses:
+				latencySeconds =  random.randint(0,inDict['preProc']['responseLatencySeconds'])
+				stampPlusLatency = tParse(message['timestamp']) + timedelta(seconds=latencySeconds)
+				message['timestamp'] = str(stampPlusLatency) + ' ' + inDict['preProc']['timezone'][0:3]
+				message['identifier'] = ident + '-RESPONSE'
+				# Drop some responses with the given probability.
+				pass
+				# Write request and response messages.
+				output.append(reqMessage)
+				output.append(message)
 	# Add control messages to output.
 	for action in inDict['preProc']['controlActions']:
 		for event in action['schedule'].split(';'):
@@ -183,15 +201,6 @@ def pre(inDict):
 def post(inDict, messages):
 	# Short timezone coda for things missing it.
 	tzc = ' ' + inDict['preProc']['timezone'][0:3]
-	# Helper function for timestamp parsing.
-	def tParse(timeString):
-		return datetime.strptime(timeString[0:-4], '%Y-%m-%d %H:%M:%S')
-	# Helper function for random dates in a range.
-	def randomDate(start, end):
-		delta = end - start
-		int_delta = (delta.days * 24 * 60 * 60) + delta.seconds
-		random_second = random.randrange(int_delta)
-		return start + timedelta(seconds=random_second)
 	# Perform DOS attacks by dropping messages.
 	for attack in inDict['postProc']['dosList']:
 		start = tParse(attack['start'] + tzc)
@@ -227,6 +236,17 @@ def post(inDict, messages):
 		json.dump(messages, outFile, indent = 4)
 	# And return as well.
 	return messages
+
+def tParse(timeString):
+	''' Helper function for timestamp parsing.'''
+	return datetime.strptime(timeString[0:-4], '%Y-%m-%d %H:%M:%S')
+
+def randomDate(start, end):
+	''' Helper function for random dates in a range. '''
+	delta = end - start
+	int_delta = (delta.days * 24 * 60 * 60) + delta.seconds
+	random_second = random.randrange(int_delta)
+	return start + timedelta(seconds=random_second)
 
 if __name__ == '__main__':
 	dig(testInput)

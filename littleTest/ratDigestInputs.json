@@ -44,6 +44,7 @@
         "switchNames": [
             "newSwitch"
         ], 
+        "responseLatencySeconds": 3, 
         "stopTime": "2017-01-01 13:00:00", 
         "regulatorReadInterval": "450"
     }, 
