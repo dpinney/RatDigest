@@ -41,15 +41,17 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX 5th attack type. Mod.
 - XXX Bug with DOS attacks not dropping all packets? Fixed. Wrong list delete method.
 - OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
-- OOO Alarms on power and not just voltage?
 - OOO Port voltage alarm code to new method.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
+- OOO Charts in anomalyExample.
+
+# v4 Todo List
+- OOO Alarms on power and not just voltage?
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
-- OOO Charts in anomalyExample.
-- OOO need a control action generator with frequency basis.
-- OOO inputs from file instead of in the source?
+- OOO Need a control action generator with frequency basis.
+- OOO Inputs from file instead of in the source?
 - OOO Port to the final RADICS model.
 
 # Identifier Key
