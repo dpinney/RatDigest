@@ -1,16 +1,16 @@
-# RatDigest
+### RatDigest
 
 It configures and generates cyber-physical simulation results for advanced security reasearch. It's an anagram of GridState.
 
-# Install Instructions.
+### Install Instructions.
 
 Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/files/?source=navbar) and Python [2.7.x](https://www.python.org/downloads/). Then download the ratDigest [release you want](https://github.com/dpinney/RatDigest/releases), unzip it, and run `python ratDigest.py` to run the tests.
 
-# GLM Assumptions
+### GLM Assumptions
 
 - No clock or minimum timestep settings (we add our own).
 
-# v1 Todo List (XXX = Complete)
+### v1 Todo List (XXX = Complete)
 
 - XXX Add identifier to each payload.
 - XXX Switch object in test system.
@@ -21,7 +21,7 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Generate alarms with identifiers.
 - XXX Add attacks.
 
-# v2 Todo List
+### v2 Todo List
 
 - XXX Get v4.0 install instructions (not an issue) and breaker open/close info from PNNL.
 - XXX Don't os.chdir. Nah, it's actually pretty clear to move the process.
@@ -37,24 +37,28 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Different alarm approach that doesn't rely on stderr and will scale to all alarm types. Added but not utilized.
 - XXX Run on an intermediate sized system, 2 meter groups (lessLittleTest).
 
-# v3 Todo List
-- XXX 5th attack type. Mod.
+### v3 Todo List
+
+- XXX 5th attack type added. Modify values.
 - XXX Bug with DOS attacks not dropping all packets? Fixed. Wrong list delete method.
-- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
+- XXX Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
 - OOO Port voltage alarm code to new method.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
-- OOO Charts in anomalyExample.
 
-# v4 Todo List
+### v4 Todo List
+
 - OOO Alarms on power and not just voltage?
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
 - OOO Need a control action generator with frequency basis.
+- OOO Charts in anomalyExample.
 - OOO Inputs from file instead of in the source?
 - OOO Port to the final RADICS model.
 
-# Identifier Key
+### References
+
+Identifier Key:
 
 - XXX Latest AMI Reading = MS-GetLatestReadings = MS-GLR
 - XXX AMI Meter disconnect command = MS-IniateDisconnectConnect = MS-IDC
@@ -65,9 +69,7 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Breaker open/close = DNP-SubstationBreakerSwitchWrite
 - OOO Reading From Multiple Meters (Not a total! Only include energy!) = MS-GetLatestReadingsByMeterGroup = MS-GLRBMG
 
-# Attack List
-
-For the November 2017 exercise 5 types of attacks are considered to be in scope:
+Attack List. For the November 2017 exercise 5 types of attacks are considered to be in scope:
 
 - XXX PRE - AMI.1: Authorized Employee Issues Unauthorized Mass Remote Disconnect - do meter disconnects in simulation for a long list of meters.
 - XXX PRE - DGM.10: Switched Capacitor Banks are Manipulated to Degrade Power Quality - tell a bunch of caps to switch in the simulation.

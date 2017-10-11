@@ -207,6 +207,15 @@ def pre(inDict):
 					ident = 'DNP-SubstationBreakerSwitchStatus'
 				else:
 					ident = 'unknown'
+				# Add voltages to regulator readings.
+				if message.get('device_name','') in smallInput['preProc']['regulatorNames']:
+					for phase in ['A','B','C']:
+						power = complex(message.get('power_out_' + phase))
+						current = complex(message.get('current_out_' + phase))
+						if current==0:
+							message['voltage_' + phase] = str(complex(0))
+						else:
+							message['voltage_' + phase] = str(power/current)
 				# Also make a message to request each reading.
 				reqMessage = {
 					'device_name':message['device_name'],
