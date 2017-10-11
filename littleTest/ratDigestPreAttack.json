@@ -9,7 +9,7 @@
         "power_out_B": "+5703.77+200.571j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "timestamp": "2017-01-01 12:00:03 PST", 
+        "timestamp": "2017-01-01 12:00:02 PST", 
         "device_name": "Reg1", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -47,7 +47,7 @@
         "power_out_B": "+744.182+156.221j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "timestamp": "2017-01-01 12:15:01 PST", 
+        "timestamp": "2017-01-01 12:15:03 PST", 
         "device_name": "Reg1", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -66,7 +66,7 @@
         "power_out_B": "+744.182+156.221j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "timestamp": "2017-01-01 12:22:30 PST", 
+        "timestamp": "2017-01-01 12:22:33 PST", 
         "device_name": "Reg1", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -85,7 +85,7 @@
         "power_out_B": "+744.182+156.221j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "timestamp": "2017-01-01 12:30:01 PST", 
+        "timestamp": "2017-01-01 12:30:02 PST", 
         "device_name": "Reg1", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -104,7 +104,7 @@
         "power_out_B": "+701.409+142.17j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "timestamp": "2017-01-01 12:37:33 PST", 
+        "timestamp": "2017-01-01 12:37:32 PST", 
         "device_name": "Reg1", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -142,7 +142,7 @@
         "power_out_B": "+62809.3+3299.77j", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "timestamp": "2017-01-01 12:52:32 PST", 
+        "timestamp": "2017-01-01 12:52:30 PST", 
         "device_name": "Reg1", 
         "tap_C": "1", 
         "tap_B": "1", 
@@ -159,7 +159,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:00:00 PST", 
+        "timestamp": "2017-01-01 12:00:01 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -198,7 +198,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:22:30 PST", 
+        "timestamp": "2017-01-01 12:22:33 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -211,7 +211,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:30:00 PST", 
+        "timestamp": "2017-01-01 12:30:01 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -224,7 +224,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:37:32 PST", 
+        "timestamp": "2017-01-01 12:37:30 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -237,7 +237,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:45:01 PST", 
+        "timestamp": "2017-01-01 12:45:00 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -250,7 +250,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:52:33 PST", 
+        "timestamp": "2017-01-01 12:52:31 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -262,7 +262,7 @@
     }, 
     {
         "measured_real_energy": "+0", 
-        "timestamp": "2017-01-01 12:00:01 PST", 
+        "timestamp": "2017-01-01 12:00:03 PST", 
         "measured_voltage_2": "+120.34-120.041d", 
         "measured_reactive_power": "+185.252", 
         "device_name": "tm_2", 
@@ -277,7 +277,7 @@
     }, 
     {
         "measured_real_energy": "+583.123", 
-        "timestamp": "2017-01-01 12:13:20 PST", 
+        "timestamp": "2017-01-01 12:13:23 PST", 
         "measured_voltage_2": "+120.739-120.004d", 
         "measured_reactive_power": "+157.364", 
         "device_name": "tm_2", 
@@ -292,7 +292,7 @@
     }, 
     {
         "measured_real_energy": "+746.23", 
-        "timestamp": "2017-01-01 12:26:41 PST", 
+        "timestamp": "2017-01-01 12:26:43 PST", 
         "measured_voltage_2": "+120.728-120.005d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "tm_2", 
@@ -307,7 +307,7 @@
     }, 
     {
         "measured_real_energy": "+904.765", 
-        "timestamp": "2017-01-01 12:40:02 PST", 
+        "timestamp": "2017-01-01 12:40:00 PST", 
         "measured_voltage_2": "+120.724-120.006d", 
         "measured_reactive_power": "+130.948", 
         "device_name": "tm_2", 
@@ -322,7 +322,7 @@
     }, 
     {
         "measured_real_energy": "+8606.65", 
-        "timestamp": "2017-01-01 12:53:22 PST", 
+        "timestamp": "2017-01-01 12:53:21 PST", 
         "measured_voltage_2": "+126.41-118.223d", 
         "measured_reactive_power": "+104.729", 
         "device_name": "tm_2", 
@@ -337,7 +337,7 @@
     }, 
     {
         "measured_real_energy": "+0", 
-        "timestamp": "2017-01-01 12:00:02 PST", 
+        "timestamp": "2017-01-01 12:00:00 PST", 
         "measured_voltage_2": "+121.088-0.0408467d", 
         "measured_reactive_power": "+187.213", 
         "device_name": "tm_1", 
@@ -367,7 +367,7 @@
     }, 
     {
         "measured_real_energy": "+747.903", 
-        "timestamp": "2017-01-01 12:26:40 PST", 
+        "timestamp": "2017-01-01 12:26:43 PST", 
         "measured_voltage_2": "+120.728-0.00546561d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "tm_1", 
@@ -382,7 +382,7 @@
     }, 
     {
         "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:40:00 PST", 
+        "timestamp": "2017-01-01 12:40:02 PST", 
         "measured_voltage_2": "+0+0d", 
         "measured_reactive_power": "+0", 
         "device_name": "tm_1", 
@@ -397,7 +397,7 @@
     }, 
     {
         "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:53:22 PST", 
+        "timestamp": "2017-01-01 12:53:21 PST", 
         "measured_voltage_2": "+0+0d", 
         "measured_reactive_power": "+0", 
         "device_name": "tm_1", 

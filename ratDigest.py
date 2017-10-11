@@ -28,8 +28,16 @@ smallInput = {
 		],
 	},
 	'postProc': {
-		'dosList':[{'device_name':'Reg1','start':'2017-01-01 12:07:00','end':'2017-01-01 12:16:00'}],
-		'spoofList':[{'device_name':'tm_2','type':'alarm','quantity':5,'start':'2017-01-01 12:20:00','end':'2017-01-01 12:40:00'}],
+		'dosList':[
+			{'device_name':'Reg1','start':'2017-01-01 12:45:00','end':'2017-01-01 12:59:00'}
+		],
+		'spoofList':[
+			{'device_name':'tm_2','type':'alarm','quantity':5,'start':'2017-01-01 12:20:00','end':'2017-01-01 12:40:00'}
+		],
+		'modList':[
+			{'device_name':'Reg1','property':'power_out_B','multiply':0.5,'add':1,'start':'2017-01-01 12:00:00','end':'2017-01-01 12:20:00',},
+			{'device_name':'Reg1','property':'power_out_A','multiply':0,'add':0,'start':'2017-01-01 12:00:00','end':'2017-01-01 12:20:00',},
+		]
 	}
 }
 
@@ -270,9 +278,11 @@ def post(inDict, messages):
 		end = tParse(attack['end'] + tzc)
 		for message in messages:
 			time = tParse(message['timestamp'])
-			if start < time < end:
-				if attack['device_name'] == message.get('device_name',''):
-					del message
+			rightTime = start < time < end
+			rightDevice = attack['device_name'] == message.get('device_name','')
+			if rightTime and rightDevice:
+				# NOTE: This fails intermittently. Probably due to GridLAB-D.
+				messages.remove(message)
 	# Perform spoof attacks.
 	for attack in inDict['postProc']['spoofList']:
 		start = tParse(attack['start'] + tzc)
@@ -294,6 +304,21 @@ def post(inDict, messages):
 			fakeMessage = dict(messageTemplate)
 			fakeMessage['timestamp'] = datetime.strftime(randomDate(start, end), '%Y-%m-%d %H:%M:%S' + tzc)
 			messages.append(fakeMessage)
+	# Perform mod attacks.
+	for attack in inDict['postProc']['modList']:
+		start = tParse(attack['start'] + tzc)
+		end = tParse(attack['end'] + tzc)
+		for message in messages:
+			time = tParse(message['timestamp'])
+			rightTime = start < time < end
+			rightDevice = attack['device_name'] == message.get('device_name','')
+			rightProp = attack['property'] in message
+			if rightTime and rightDevice and rightProp:
+				message['fakeMod'] = 'True'
+				prop = message[attack['property']]
+				# Perform complex affine transform.
+				newProp = str(complex(prop) * complex(attack['multiply']) + complex(attack['add']))
+				message[attack['property']] = newProp
 	# Dump results.
 	with open('ratDigestPostAttack.json','w') as outFile:
 		json.dump(messages, outFile, indent = 4)

@@ -38,19 +38,19 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Run on an intermediate sized system, 2 meter groups (lessLittleTest).
 
 # v3 Todo List
-- OOO Bug with DOS attacks not dropping all packets?
+- XXX 5th attack type. Mod.
+- XXX Bug with DOS attacks not dropping all packets? Fixed. Wrong list delete method.
+- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
 - OOO Alarms on power and not just voltage?
 - OOO Port voltage alarm code to new method.
 - OOO Add a 'restored' message post AMI alarm.
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
-- OOO 5th attack type.
 - OOO Charts in anomalyExample.
 - OOO need a control action generator with frequency basis.
-- OOO Port to the final RADICS model.
 - OOO inputs from file instead of in the source?
-- OOO Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
+- OOO Port to the final RADICS model.
 
 # Identifier Key
 
@@ -71,4 +71,4 @@ For the November 2017 exercise 5 types of attacks are considered to be in scope:
 - XXX PRE - DGM.10: Switched Capacitor Banks are Manipulated to Degrade Power Quality - tell a bunch of caps to switch in the simulation.
 - XXX POST - Denial of Service Attack - Delete all messages from (device, start, end) tuples.
 - XXX POST - AMI.8: False Meter Alarms Overwhelm AMI and Mask Real Alarms - create a bunch of fake alarm messages based on a list of (meter, timestamp) pairs.
-- OOO POST - DGM.6: Spoofed Substation Field Devices Influence Automated Responses - "For this attack type, Output_Message_Creation() will artificially modify the connectivity, power or voltage status/readings at specified devices.  A list of spoofed devices will be provided for this attack.  Each item in the list will include a start and end timestamps, a device identifier, a quantity identifier (connection status, power, voltage), and a code indicating the change that should be calculated. (The “codes” will indicate whether a value should be reduced to 0, multiplied by a factor, set to a specific value, etc.  [The ”codes” are to be determined.] Note: The creation of these spoofed messages does not change anything about how the GridLab-D simulation is run.
+- XXX POST - DGM.6: Spoofed Substation Field Devices Influence Automated Responses - change connection status, power or voltage via an affine transform.
