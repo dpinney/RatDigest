@@ -42,8 +42,8 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX 5th attack type added. Modify values.
 - XXX Bug with DOS attacks not dropping all packets? Fixed. Wrong list delete method.
 - XXX Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
-- OOO Port voltage alarm code to new method.
-- OOO Add a 'restored' message post AMI alarm.
+- XXX Port voltage alarm code to new method.
+- XXX Add a 'restored' message post AMI alarm.
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 
 ### v4 Todo List

@@ -177,6 +177,7 @@ def pre(inDict):
 	csvFileNames = [x for x in allFileNames if x.startswith(FILE_UID) and x.endswith('.csv')]
 	output = []
 	alarmReads = []
+	tzc = ' ' + inDict['preProc']['timezone'][0:3]
 	# Put recorder data in output.
 	for fName in csvFileNames:
 		with open(fName,'r') as inFile:
@@ -225,7 +226,7 @@ def pre(inDict):
 				# Add a little latency to the responses:
 				latencySeconds =  random.randint(0,inDict['preProc']['responseLatencySeconds'])
 				stampPlusLatency = tParse(message['timestamp']) + timedelta(seconds=latencySeconds)
-				message['timestamp'] = str(stampPlusLatency) + ' ' + inDict['preProc']['timezone'][0:3]
+				message['timestamp'] = str(stampPlusLatency) + tzc
 				message['identifier'] = ident + '-RESPONSE'
 				# Write request message.
 				output.append(reqMessage)
@@ -240,38 +241,41 @@ def pre(inDict):
 				'device_name':action['parent'],
 				'control_variable':action['property'],
 				'value': value,
-				'timestamp':timestamp + ' ' + inDict['preProc']['timezone'][0:3],
+				'timestamp':timestamp + tzc,
 				'identifier':action['identifier']
 			}
 			output.append(outMessage)
-	# Add alarms to output via stderr.
-	with open(FILE_UID + '_xstderr.txt') as errFile:
-		lines = errFile.read().split('\n')
-		for x in lines:
-			if "is outside of ANSI standards" in x:
-				out = {}
-				out['identifier'] = 'MS-ODEventNotification'
-				out['type'] = 'voltage alarm'
-				rawLocation = x[x.find(' : ') + 3:x.find(' - ')]
-				try:
-					out['location'] = inDict['preProc']['meterLoadMap'][rawLocation]
-				except:
-					# HACK: if we don't have a house->meter map, just use house name.
-					out['location'] = rawLocation
-				magnitude = x[x.find(' = ') + 3 :x.find(' percent')]
-				out['magnitude'] = str(float(magnitude)/100.0 * 120.0)
-				out['timestamp'] = x[10:33]
-				output.append(out)
-	# More alarms.
-	alarmVolts = {'1':{},'2':{}}
-	for phase in alarmVolts.keys():
-		for meterName in inDict['preProc']['meterNames']:
-			if alarmVolts[phase].get(meterName, '') == '':
-				alarmVolts[phase][meterName] = []
-			for message in alarmReads:
-				alarmVolts[phase][meterName].append((message['timestamp'],message[meterName]))
-	# TODO: calculate full set of alarms.
-	pass
+	# Process alarms.
+	for meterName in inDict['preProc']['meterNames']:
+		voltProblem = False
+		for step in alarmReads:
+			voltage = complex(step[meterName].replace('d','j'))
+			voltageMag = abs(voltage)/120.0
+			stamp = step['timestamp']
+			noVolts = (voltageMag > 1.15 or voltageMag < 0.85)
+			if not voltProblem and noVolts:
+				# New voltage problem.
+				alarmMessage = {
+					'location':meterName,
+					'identifier':'MS-ODEventNotification',
+					'type':'voltage alarm',
+					'timestamp':timestamp + tzc,
+					'magnitude':str(voltageMag)
+				}
+				output.append(alarmMessage)
+				voltProblem = True
+			elif voltProblem and not noVolts:
+				# Voltage problem resolved.
+				restoreMessage = {
+					'location':meterName,
+					'identifier':'MS-ODEventNotification',
+					'type':'voltage restoration',
+					'timestamp':timestamp + tzc
+				}
+				output.append(restoreMessage)
+				voltProblem = False
+			else:
+				continue
 	# Write full output.
 	with open(FILE_UID + 'PreAttack.json','w') as outFile:
 		json.dump(output, outFile, indent=4)
