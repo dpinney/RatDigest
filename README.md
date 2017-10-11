@@ -1,6 +1,6 @@
-### RatDigest
+### Overview
 
-It configures and generates cyber-physical simulation results for advanced security reasearch. It's an anagram of GridState.
+RatDigest configures and generates cyber-physical simulation results for advanced security reasearch. GridLAB-D circuit models go in, specified control, metering and cyber attack actions are executed, and network packets come out. It's an anagram of GridState.
 
 ### Install Instructions.
 
