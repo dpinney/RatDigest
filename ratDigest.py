@@ -67,6 +67,7 @@ largeInput = {
 	'postProc': {
 		'dosList':[{'device_name':'R2-12-47-2_reg_2','start':'2009-01-01 12:07:00','end':'2009-01-01 12:16:00'}],
 		'spoofList':[{'device_name':'R2-12-47-2_tm_141','type':'alarm','quantity':5,'start':'2009-01-01 12:20:00','end':'2009-01-01 12:40:00'}],
+		'modList':[]
 	}
 }
 
@@ -286,16 +287,19 @@ def post(inDict, messages):
 	# Short timezone coda for things missing it.
 	tzc = ' ' + inDict['preProc']['timezone'][0:3]
 	# Perform DOS attacks by dropping messages.
+	deleteList = []
 	for attack in inDict['postProc']['dosList']:
+		print attack
 		start = tParse(attack['start'] + tzc)
 		end = tParse(attack['end'] + tzc)
 		for message in messages:
 			time = tParse(message['timestamp'])
 			rightTime = start < time < end
-			rightDevice = attack['device_name'] == message.get('device_name','')
+			rightDevice = (attack['device_name'] == message.get('device_name',''))
 			if rightTime and rightDevice:
-				# NOTE: This fails intermittently. Probably due to GridLAB-D.
-				messages.remove(message)
+				deleteList.append(message)
+	for message in deleteList:
+		messages.remove(message)
 	# Perform spoof attacks.
 	for attack in inDict['postProc']['spoofList']:
 		start = tParse(attack['start'] + tzc)
@@ -350,5 +354,5 @@ def randomDate(start, end):
 	return start + timedelta(seconds=random_second)
 
 if __name__ == '__main__':
-	dig(smallInput)
-	# dig(largeInput)
+	# dig(smallInput)
+	dig(largeInput)

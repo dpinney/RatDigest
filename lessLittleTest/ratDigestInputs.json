@@ -239,7 +239,7 @@
             "R2-12-47-2_switch_12"
         ], 
         "responseLatencySeconds": 3, 
-        "stopTime": "2009-01-01 14:00:00", 
+        "stopTime": "2009-01-01 12:30:00", 
         "alarmMinIntervalSeconds": "60", 
         "regulatorReadInterval": "450"
     }, 
@@ -260,7 +260,8 @@
                 "type": "alarm", 
                 "device_name": "R2-12-47-2_tm_141"
             }
-        ]
+        ], 
+        "modList": []
     }, 
     "glmDirPath": "./lessLittleTest/"
 }

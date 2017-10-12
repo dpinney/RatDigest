@@ -44,6 +44,7 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Reg voltage in output via ```w = complex('+701.409+142.17j'); i = complex('+0.290224-0.0588258j'); print abs(w/i)```
 - XXX Port voltage alarm code to new method.
 - XXX Add a 'restored' message post AMI alarm.
+- XXX More durable DOS message deletion code.
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 
 ### v4 Todo List
@@ -51,9 +52,9 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - OOO Alarms on power and not just voltage?
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
-- OOO Need a control action generator with frequency basis.
-- OOO Charts in anomalyExample.
 - OOO Inputs from file instead of in the source?
+- OOO Need a control action generator with frequency basis?
+- OOO Charts in anomalyExample.
 - OOO Port to the final RADICS model.
 
 ### References

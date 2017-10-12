@@ -5,12 +5,12 @@
         "device_name": "Reg1"
     }, 
     {
-        "power_out_A": "+5773.05+202.72j", 
-        "power_out_B": "+5703.77+200.571j", 
+        "power_out_A": "0j", 
+        "power_out_B": "(2852.885+100.2855j)", 
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
         "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:00:00 PST", 
+        "timestamp": "2017-01-01 12:00:01 PST", 
         "device_name": "Reg1", 
         "voltage_B": "(-1352.42380071+2002.9518093j)", 
         "tap_C": "1", 
@@ -19,7 +19,8 @@
         "current_out_B": "-1.2519-2.00238j", 
         "current_out_C": "+0+0j", 
         "tap_A": "2", 
-        "current_out_A": "+2.37398-0.0833622j"
+        "current_out_A": "+2.37398-0.0833622j", 
+        "fakeMod": "True"
     }, 
     {
         "timestamp": "2017-01-01 12:07:30 PST", 
@@ -32,7 +33,7 @@
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
         "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:07:31 PST", 
+        "timestamp": "2017-01-01 12:07:32 PST", 
         "device_name": "Reg1", 
         "voltage_B": "(-1998.31345731+1359.26934708j)", 
         "tap_C": "1", 
@@ -78,7 +79,7 @@
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
         "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:22:31 PST", 
+        "timestamp": "2017-01-01 12:22:32 PST", 
         "device_name": "Reg1", 
         "voltage_B": "(-1948.03711173+1430.39044808j)", 
         "tap_C": "1", 
@@ -100,7 +101,7 @@
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
         "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:30:02 PST", 
+        "timestamp": "2017-01-01 12:30:03 PST", 
         "device_name": "Reg1", 
         "voltage_B": "(-1948.03711173+1430.39044808j)", 
         "tap_C": "1", 
@@ -122,7 +123,7 @@
         "power_out_C": "+0+0j", 
         "identifier": "DNP-SubstationKwH-RESPONSE", 
         "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:37:31 PST", 
+        "timestamp": "2017-01-01 12:37:30 PST", 
         "device_name": "Reg1", 
         "voltage_B": "(-1928.00731521+1457.28163102j)", 
         "tap_C": "1", 
@@ -139,38 +140,9 @@
         "device_name": "Reg1"
     }, 
     {
-        "power_out_A": "+0+0j", 
-        "power_out_B": "+62809.3+3299.74j", 
-        "power_out_C": "+0+0j", 
-        "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:45:00 PST", 
-        "device_name": "Reg1", 
-        "voltage_B": "(-1421.0473413+1954.85747776j)", 
-        "tap_C": "1", 
-        "voltage_A": "0j", 
-        "tap_B": "1", 
-        "current_out_B": "-14.1768-21.8243j", 
-        "current_out_C": "+0+0j", 
-        "tap_A": "2", 
-        "current_out_A": "+0+0j"
-    }, 
-    {
-        "power_out_A": "+0+0j", 
-        "power_out_B": "+62809.3+3299.77j", 
-        "power_out_C": "+0+0j", 
-        "identifier": "DNP-SubstationKwH-RESPONSE", 
-        "voltage_C": "0j", 
-        "timestamp": "2017-01-01 12:52:33 PST", 
-        "device_name": "Reg1", 
-        "voltage_B": "(-1421.048308+1954.8568498j)", 
-        "tap_C": "1", 
-        "voltage_A": "0j", 
-        "tap_B": "1", 
-        "current_out_B": "-14.1768-21.8243j", 
-        "current_out_C": "+0+0j", 
-        "tap_A": "2", 
-        "current_out_A": "+0+0j"
+        "timestamp": "2017-01-01 12:52:30 PST", 
+        "identifier": "DNP-SubstationKwH", 
+        "device_name": "Reg1"
     }, 
     {
         "timestamp": "2017-01-01 12:00:00 PST", 
@@ -180,7 +152,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:00:01 PST", 
+        "timestamp": "2017-01-01 12:00:00 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -206,7 +178,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:15:02 PST", 
+        "timestamp": "2017-01-01 12:15:01 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -219,7 +191,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:22:31 PST", 
+        "timestamp": "2017-01-01 12:22:30 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "CLOSED", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -232,7 +204,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:30:00 PST", 
+        "timestamp": "2017-01-01 12:30:02 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -245,7 +217,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:37:33 PST", 
+        "timestamp": "2017-01-01 12:37:31 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -258,7 +230,7 @@
     {
         "phase_B_state": "CLOSED", 
         "phase_C_state": "CLOSED", 
-        "timestamp": "2017-01-01 12:45:01 PST", 
+        "timestamp": "2017-01-01 12:45:02 PST", 
         "device_name": "newSwitch", 
         "phase_A_state": "OPEN", 
         "identifier": "DNP-SubstationBreakerSwitchStatus-RESPONSE"
@@ -283,7 +255,7 @@
     }, 
     {
         "measured_real_energy": "+0", 
-        "timestamp": "2017-01-01 12:00:02 PST", 
+        "timestamp": "2017-01-01 12:00:03 PST", 
         "measured_voltage_2": "+120.34-120.041d", 
         "measured_reactive_power": "+185.252", 
         "device_name": "tm_2", 
@@ -298,7 +270,7 @@
     }, 
     {
         "measured_real_energy": "+583.123", 
-        "timestamp": "2017-01-01 12:13:20 PST", 
+        "timestamp": "2017-01-01 12:13:23 PST", 
         "measured_voltage_2": "+120.739-120.004d", 
         "measured_reactive_power": "+157.364", 
         "device_name": "tm_2", 
@@ -313,7 +285,7 @@
     }, 
     {
         "measured_real_energy": "+746.23", 
-        "timestamp": "2017-01-01 12:26:41 PST", 
+        "timestamp": "2017-01-01 12:26:42 PST", 
         "measured_voltage_2": "+120.728-120.005d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "tm_2", 
@@ -358,7 +330,7 @@
     }, 
     {
         "measured_real_energy": "+0", 
-        "timestamp": "2017-01-01 12:00:01 PST", 
+        "timestamp": "2017-01-01 12:00:00 PST", 
         "measured_voltage_2": "+121.088-0.0408467d", 
         "measured_reactive_power": "+187.213", 
         "device_name": "tm_1", 
@@ -373,7 +345,7 @@
     }, 
     {
         "measured_real_energy": "+584.584", 
-        "timestamp": "2017-01-01 12:13:22 PST", 
+        "timestamp": "2017-01-01 12:13:20 PST", 
         "measured_voltage_2": "+121.489-0.00348654d", 
         "measured_reactive_power": "+159.033", 
         "device_name": "tm_1", 
@@ -388,7 +360,7 @@
     }, 
     {
         "measured_real_energy": "+747.903", 
-        "timestamp": "2017-01-01 12:26:42 PST", 
+        "timestamp": "2017-01-01 12:26:40 PST", 
         "measured_voltage_2": "+120.728-0.00546561d", 
         "measured_reactive_power": "+144.981", 
         "device_name": "tm_1", 
@@ -403,7 +375,7 @@
     }, 
     {
         "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:40:01 PST", 
+        "timestamp": "2017-01-01 12:40:03 PST", 
         "measured_voltage_2": "+0+0d", 
         "measured_reactive_power": "+0", 
         "device_name": "tm_1", 
@@ -418,7 +390,7 @@
     }, 
     {
         "measured_real_energy": "+788.605", 
-        "timestamp": "2017-01-01 12:53:23 PST", 
+        "timestamp": "2017-01-01 12:53:20 PST", 
         "measured_voltage_2": "+0+0d", 
         "measured_reactive_power": "+0", 
         "device_name": "tm_1", 
@@ -496,40 +468,40 @@
         "magnitude": "1.41605872978"
     }, 
     {
-        "timestamp": "2017-01-01 12:25:33 PST", 
-        "magnitude": "97", 
+        "timestamp": "2017-01-01 12:30:47 PST", 
+        "magnitude": "103", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:29:52 PST", 
-        "magnitude": "97", 
+        "timestamp": "2017-01-01 12:32:10 PST", 
+        "magnitude": "103", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:26:17 PST", 
-        "magnitude": "97", 
+        "timestamp": "2017-01-01 12:29:19 PST", 
+        "magnitude": "103", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:20:17 PST", 
-        "magnitude": "97", 
+        "timestamp": "2017-01-01 12:21:42 PST", 
+        "magnitude": "103", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
         "type": "voltage alarm"
     }, 
     {
-        "timestamp": "2017-01-01 12:32:24 PST", 
-        "magnitude": "97", 
+        "timestamp": "2017-01-01 12:25:58 PST", 
+        "magnitude": "103", 
         "location": "tm_2", 
         "fake": "True", 
         "identifier": "MS-ODEventNotification", 
