@@ -260,7 +260,7 @@ def pre(inDict):
 					'location':meterName,
 					'identifier':'MS-ODEventNotification',
 					'type':'voltage alarm',
-					'timestamp':timestamp + tzc,
+					'timestamp':stamp,
 					'magnitude':str(voltageMag)
 				}
 				output.append(alarmMessage)
