@@ -289,7 +289,6 @@ def post(inDict, messages):
 	# Perform DOS attacks by dropping messages.
 	deleteList = []
 	for attack in inDict['postProc']['dosList']:
-		print attack
 		start = tParse(attack['start'] + tzc)
 		end = tParse(attack['end'] + tzc)
 		for message in messages:
@@ -354,5 +353,5 @@ def randomDate(start, end):
 	return start + timedelta(seconds=random_second)
 
 if __name__ == '__main__':
-	# dig(smallInput)
-	dig(largeInput)
+	dig(smallInput)
+	# dig(largeInput)
