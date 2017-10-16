@@ -49,6 +49,9 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 
 ### v4 Todo List
 
+- OOO metering of capacitor switch status
+- OOO metering of arbitrary node voltages
+- OOO pass through DNP3 code points (0-39) per substation variable
 - OOO Alarms on power and not just voltage?
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
