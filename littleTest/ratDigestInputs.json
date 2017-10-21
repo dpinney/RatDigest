@@ -1,5 +1,11 @@
 {
     "preProc": {
+        "threePhaseMeterNames": [], 
+        "transformerNames": [], 
+        "regulatorNames": [
+            "Reg1"
+        ], 
+        "capacitorNames": [], 
         "controlActions": [
             {
                 "property": "service_status", 
@@ -26,35 +32,61 @@
                 "schedule": "2017-01-01 12:45:00,60.0 kW"
             }
         ], 
+        "nodeNames": [], 
+        "switchReadInterval": "4", 
+        "responseLatencySeconds": 3, 
+        "stopTime": "2017-01-01 13:00:00", 
         "responseDropProbability": 0, 
         "meterReadInterval": "800", 
         "startTime": "2017-01-01 12:00:00", 
         "simTimeStep": "4", 
         "timezone": "PST+8PDT", 
-        "meterLoadMap": {
-            "house2": "tm_2", 
-            "house1": "tm_1"
-        }, 
-        "meterNames": [
-            "tm_1", 
-            "tm_2"
-        ], 
-        "regulatorNames": [
-            "Reg1"
-        ], 
         "switchNames": [
             "newSwitch"
         ], 
-        "responseLatencySeconds": 3, 
-        "stopTime": "2017-01-01 13:00:00", 
+        "singlePhaseMeterNames": [
+            "tm_1", 
+            "tm_2"
+        ], 
         "alarmMinIntervalSeconds": "60", 
         "regulatorReadInterval": "450"
     }, 
     "glmName": "smsSingle.glm", 
     "postProc": {
-        "dosList": [], 
-        "spoofList": [], 
-        "modList": []
+        "dosList": [
+            {
+                "start": "2017-01-01 12:45:00", 
+                "end": "2017-01-01 12:59:00", 
+                "device_name": "Reg1"
+            }
+        ], 
+        "spoofList": [
+            {
+                "end": "2017-01-01 12:40:00", 
+                "start": "2017-01-01 12:20:00", 
+                "quantity": 5, 
+                "type": "alarm", 
+                "device_name": "tm_2"
+            }
+        ], 
+        "modList": [
+            {
+                "end": "2017-01-01 12:20:00", 
+                "device_name": "Reg1", 
+                "start": "2017-01-01 12:00:00", 
+                "add": 1, 
+                "multiply": 0.5, 
+                "property": "power_out_B"
+            }, 
+            {
+                "end": "2017-01-01 12:20:00", 
+                "device_name": "Reg1", 
+                "start": "2017-01-01 12:00:00", 
+                "add": 0, 
+                "multiply": 0, 
+                "property": "power_out_A"
+            }
+        ]
     }, 
     "glmDirPath": "./littleTest/"
 }

@@ -777,29 +777,29 @@ object group_recorder {
 };
 
 object recorder {
-	file ratDigest_METER_tm_1.csv;
+	file ratDigest_1METER_tm_1.csv;
 	interval 800;
 	parent tm_1;
-	property measured_real_energy, measured_real_power, measured_reactive_power, measured_voltage_1, measured_voltage_2;
+	property measured_real_energy, voltage_12;
 };
 
 object recorder {
-	file ratDigest_METER_tm_2.csv;
+	file ratDigest_1METER_tm_2.csv;
 	interval 800;
 	parent tm_2;
-	property measured_real_energy, measured_real_power, measured_reactive_power, measured_voltage_1, measured_voltage_2;
+	property measured_real_energy, voltage_12;
 };
 
 object recorder {
 	file ratDigest_REG_Reg1.csv;
 	interval 450;
 	parent Reg1;
-	property power_out_A, power_out_B, power_out_C, current_out_A, current_out_B, current_out_C, tap_A, tap_B, tap_C;
+	property tap_A, tap_B, tap_C;
 };
 
 object recorder {
 	file ratDigest_SWITCH_newSwitch.csv;
-	interval 450;
+	interval 4;
 	parent newSwitch;
 	property phase_A_state, phase_B_state, phase_C_state;
 };

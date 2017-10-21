@@ -1,0 +1,14 @@
+# file...... ratDigest_1METER_tm_1.csv
+# date...... Fri Oct 20 17:28:08 2017
+# user...... dpinney
+# host...... (null)
+# target.... triplex_meter 19
+# trigger... (none)
+# interval.. 800
+# limit..... 0
+# timestamp,measured_real_energy, voltage_12
+2017-01-01 12:00:00 PST,+0,+242.119-0.148269j
+2017-01-01 12:13:20 PST,+584.584,+242.881+0.00101121j
+2017-01-01 12:26:40 PST,+747.903,+241.383-0.00056024j
+2017-01-01 12:40:00 PST,+788.605,+0+0j
+2017-01-01 12:53:20 PST,+788.605,+0+0j
