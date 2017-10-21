@@ -45,17 +45,17 @@ Get the prerequisites: [GridLAB-D](https://sourceforge.net/projects/gridlab-d/fi
 - XXX Port voltage alarm code to new method.
 - XXX Add a 'restored' message post AMI alarm.
 - XXX More durable DOS message deletion code.
+- XXX metering of capacitor switch status
+- XXX metering of arbitrary node voltages
+- XXX Inputs from file instead of in the source?
 - OOO Add multimeter reading payloads and identifier - 1 request with list of meters in group, 1 response with list of values.
 
 ### v4 Todo List
 
-- OOO metering of capacitor switch status
-- OOO metering of arbitrary node voltages
 - OOO pass through DNP3 code points (0-39) per substation variable
 - OOO Alarms on power and not just voltage?
 - OOO Add responses to control messages?
 - OOO Add probability drops to control message actions?
-- OOO Inputs from file instead of in the source?
 - OOO Need a control action generator with frequency basis?
 - OOO Charts in anomalyExample.
 - OOO Port to the final RADICS model.
