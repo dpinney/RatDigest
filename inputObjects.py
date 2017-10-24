@@ -82,8 +82,8 @@ RADICS_Sub1Input = {
 	'glmDirPath':'./RADICS_Sub1/',
 	'glmName':'RADICS_Sub1.glm',
 	'preProc': {
-		'startTime':'2009-03-01 00:00:00',
-		'stopTime':'2009-03-01 00:15:00',
+		'startTime':'2009-01-01 12:00:00',
+		'stopTime':'2009-01-01 13:00:00',
 		'timezone':'CST+6CDT',
 		'simTimeStep':'4',
 		'responseLatencySeconds':3,
@@ -108,10 +108,10 @@ RADICS_Sub1Input = {
 	},
 	'postProc': {
 		'dosList':[
-			#{'device_name':'R2-12-47-2_reg_2', 'start':'2009-01-01 12:17:00', 'end':'2009-01-01 12:28:00'}
+			{'device_name':'R2-12-47-2_reg_2', 'start':'2009-01-01 12:17:00', 'end':'2009-01-01 12:28:00'}
 		],
 		'spoofList':[
-			#{'device_name':'R2-12-47-2_tm_141', 'type':'alarm', 'quantity':5,'start':'2009-01-01 12:20:00', 'end':'2009-01-01 12:40:00'}
+			{'device_name':'R2-12-47-2_tm_141', 'type':'alarm', 'quantity':5,'start':'2009-01-01 12:20:00', 'end':'2009-01-01 12:40:00'}
 		],
 		'modList':[
 		]

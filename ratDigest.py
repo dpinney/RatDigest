@@ -199,13 +199,15 @@ def pre(inDict):
 				reqMessage = {
 					'device_name':message['device_name'],
 					'timestamp':message['timestamp'],
-					'identifier': ident
+					'identifier': ident,
+					'attack': False
 				}
 				# Add a little latency to the responses:
 				latencySeconds =  random.randint(0,inDict['preProc']['responseLatencySeconds'])
 				stampPlusLatency = tParse(message['timestamp']) + timedelta(seconds=latencySeconds)
 				message['timestamp'] = str(stampPlusLatency) + tzc
 				message['identifier'] = ident + '-RESPONSE'
+				message['attack'] = False
 				# Write request message.
 				output.append(reqMessage)
 				# Drop some responses with the given probability.
@@ -220,7 +222,8 @@ def pre(inDict):
 				'control_variable':action['property'],
 				'value': value,
 				'timestamp':timestamp + tzc,
-				'identifier':action['identifier']
+				'identifier':action['identifier'],
+				'attack': False
 			}
 			output.append(outMessage) 
 	# Process single phase meter alarms.
@@ -239,7 +242,8 @@ def pre(inDict):
 					'identifier':'MS-ODEventNotification',
 					'type':'voltage alarm',
 					'timestamp':stamp,
-					'magnitude':str(voltageMag)
+					'magnitude':str(voltageMag),
+					'attack': False
 				}
 				output.append(alarmMessage)
 				voltProblem = True
@@ -249,7 +253,8 @@ def pre(inDict):
 					'location':singlePhaseMeterName,
 					'identifier':'MS-ODEventNotification',
 					'type':'voltage restoration',
-					'timestamp':timestamp + tzc
+					'timestamp':timestamp + tzc,
+					'attack': False
 				}
 				output.append(restoreMessage)
 				voltProblem = False
@@ -268,6 +273,7 @@ def post(inDict, messages):
 	tzc = ' ' + inDict['preProc']['timezone'][0:3]
 	# Perform DOS attacks by dropping messages.
 	deleteList = []
+	attackList = []
 	for attack in inDict['postProc']['dosList']:
 		start = tParse(attack['start'] + tzc)
 		end = tParse(attack['end'] + tzc)
@@ -276,9 +282,17 @@ def post(inDict, messages):
 			rightTime = start < time < end
 			rightDevice = (attack['device_name'] == message.get('device_name',''))
 			if rightTime and rightDevice:
-				deleteList.append(message)
+				if "RESPONSE" in message["identifier"]:
+					deleteList.append(message)
+					newDeviceName = 'DELETED' + message['device_name']
+					message['device_name'] = newDeviceName
+					newIdentifier = 'DELETED' + message['identifier']
+					message['attack'] = True
+					attackList.append(message)
 	for message in deleteList:
 		messages.remove(message)
+	for message in attackList:
+		messages.append(message)
 	# Perform spoof attacks.
 	for attack in inDict['postProc']['spoofList']:
 		start = tParse(attack['start'] + tzc)
@@ -292,7 +306,8 @@ def post(inDict, messages):
 				'type': 'voltage alarm', 
 				'location': attack['device_name'], 
 				'magnitude': str(magnitude),
-				'fake':'True'
+				'fake':'True',
+				'attack': True
 			}
 		else:
 			raise Exception('No type specified for attack ' + str(attack))
@@ -311,6 +326,7 @@ def post(inDict, messages):
 			rightProp = attack['property'] in message
 			if rightTime and rightDevice and rightProp:
 				message['fakeMod'] = 'True'
+				message['attack'] = True
 				prop = message[attack['property']]
 				# Perform complex affine transform.
 				newProp = str(complex(prop) * complex(attack['multiply']) + complex(attack['add']))
@@ -335,6 +351,6 @@ def randomDate(start, end):
 	return start + timedelta(seconds=random_second)
 
 if __name__ == '__main__':
-	dig(inputObjects.smallInput)
+	# dig(inputObjects.smallInput)
 	# dig(inputObjects.largeInput)
-	# dig(inputObjects.RADICS_Sub1Input)
+	dig(inputObjects.RADICS_Sub1Input)
